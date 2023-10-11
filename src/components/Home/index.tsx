@@ -20,7 +20,7 @@ export const Home = () => {
         <div className="flex flex-col gap-10">
           <Banner img={homeData?.banner?.data?.attributes.url} />
           <Description img={homeData?.description?.data?.attributes.url} />
-          <CustomSlider data={homeData?.carousel.data} />
+          <CustomSlider data={homeData?.carousel.data} />÷
           <Specification img={homeData?.specification?.data?.attributes.url} />
           <OurArtists data={homeData?.artists} />
           <SneakPeak />

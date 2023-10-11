@@ -2,17 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
+body {
   color: white;
 }
-.carousel-container {
-  width: 100%;
-}
 
-.carousel-slide img {
-  width: 100%;
-  height: auto; /* Maintain aspect ratio */
-}
 @media (max-width: 768px) {
   .carousel-slide img {
     width: 100%; /* Make the image 100% of the viewport width for mobile screens */

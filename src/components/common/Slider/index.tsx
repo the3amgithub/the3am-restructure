@@ -1,10 +1,8 @@
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import Image from "next/image";
 import { RightArrow } from "../icons/RightArrowIcon";
 import { LeftArrow } from "../icons/LeftArrowIcon";
-import { Container } from "../Container";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from "react-responsive-carousel";
 
 export function Arrow(props: any) {
   let className = props.type === "next" ? "nextArrow" : "prevArrow";
@@ -55,14 +53,17 @@ export const CustomSlider = ({ data }: { data: any }) => {
     return `${process.env.NEXT_PUBLIC_API_URL_FILE}${src}`;
   };
   return (
-    <div className="full-width-carousel">
-      <Slider
-        {...settings}
-        nextArrow={<Arrow type="next" />}
-        prevArrow={<Arrow type="prev" />}
+    <div className="w-full h-[50px] md:h-[200px] lg:h-[550px]">
+      <Carousel
+        infiniteLoop={false}
+        transitionTime={1000}
+        showArrows
+        width="100%"
+        showStatus={false}
+        showIndicators={false}
       >
         {data.map((item: any) => (
-          <div key={item.id} className="carousel-slide p-14">
+          <div key={item.id}>
             <Image
               loader={() => myLoader(item.attributes.url)}
               src={`${process.env.NEXT_PUBLIC_API_URL_FILE}${item.attributes.url}`}
@@ -72,7 +73,8 @@ export const CustomSlider = ({ data }: { data: any }) => {
             />
           </div>
         ))}
-      </Slider>
+      </Carousel>
+      {/* </Slider> */}
     </div>
   );
 };

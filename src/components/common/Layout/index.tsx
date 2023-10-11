@@ -7,7 +7,7 @@ interface LayoutProp {
 }
 export const Layout = ({ children }: LayoutProp) => {
   return (
-    <div className="w-screen h-screen flex flex-col justify-between">
+    <div className="w-full h-screen flex flex-col justify-between">
       <Header />
       {children}
       <Footer />

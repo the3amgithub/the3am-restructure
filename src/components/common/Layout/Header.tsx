@@ -25,7 +25,7 @@ const navLinks = [
 export const Header = () => {
   const [menuActive, setMenuActive] = useState(false);
   return (
-    <div className="bg-black">
+    <header className="bg-black">
       <Container>
         <div className="flex justify-between items-center text-white">
           <Image
@@ -33,7 +33,7 @@ export const Header = () => {
             width={120}
             height={100}
             alt="logo"
-            className="w-[80px] lg:w-[120px]"
+            className="w-[80px] md:w-[120px] lg:w-[120px]"
           />
           <div className="hidden lg:flex gap-32 font-semibold">
             {navLinks.map((item) => (
@@ -52,19 +52,20 @@ export const Header = () => {
               onClick={() => setMenuActive(true)}
             />
             {menuActive && (
-              <div className="absolute w-full h-full bg-black top-0 left-0 flex flex-col gap-6 p-4 z-[999] ">
+              <div className="absolute w-full h-screen bg-black top-0 left-0 flex flex-col gap-6 p-4 z-[999]">
                 <Image
                   src="/img/logo_white.png"
                   width={80}
                   height={80}
                   alt="logo"
+                  className="w-[80px] md:w-[120px] lg:w-[120px]"
                 />
                 <Image
                   src="/img/close.png"
                   width={20}
                   height={20}
                   alt="logo"
-                  className="absolute right-6 top-12 cursor-pointer"
+                  className="absolute right-6 md:right-10 top-12 cursor-pointer"
                   onClick={() => setMenuActive(false)}
                 />
                 {navLinks.map((item) => (
@@ -77,6 +78,6 @@ export const Header = () => {
           </div>
         </div>
       </Container>
-    </div>
+    </header>
   );
 };

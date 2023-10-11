@@ -6,12 +6,12 @@ import Image from "next/image";
 export const SneakPeak = () => {
   return (
     <Container>
-      <div className="flex justify-between text-black py-20 px-10 items-center">
-        <h2 className="capitalize text-5xl leading-[60px]">
+      <div className="flex justify-between text-black items-center pb-10 lg:py-20 lg:px-10">
+        <h2 className="capitalize md:text-3xl lg:text-5xl lg:leading-[60px]">
           A Sneak Peek Into <br />
           The 3am Experience
         </h2>
-        <div className="flex gap-10">
+        <div className="flex lg:gap-10">
           <Link
             href="https://www.instagram.com/the3am_project/"
             target="_blank"
@@ -21,6 +21,7 @@ export const SneakPeak = () => {
               alt="instagram"
               width={150}
               height={100}
+              className="w-[80px] md:w-[100px] lg:w-[150px]"
             />
           </Link>
           <Link
@@ -32,6 +33,7 @@ export const SneakPeak = () => {
               alt="youtube"
               width={150}
               height={100}
+              className="w-[80px] md:w-[100px] lg:w-[150px]"
             />
           </Link>
         </div>

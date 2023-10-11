@@ -10,7 +10,7 @@ export const Description = ({ img }: { img: string }) => {
           width={500}
           height={500}
           alt="banner"
-          className="w-full lg:px-10"
+          className="w-full"
         />
       </Container>
 
