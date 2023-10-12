@@ -21,7 +21,7 @@ export const SneakPeak = () => {
               alt="instagram"
               width={150}
               height={100}
-              className="w-[80px] md:w-[100px] lg:w-[150px]"
+              className="w-[80px] md:w-[100px] lg:w-[150px] hover:scale-110 transition-transform"
             />
           </Link>
           <Link
@@ -33,7 +33,7 @@ export const SneakPeak = () => {
               alt="youtube"
               width={150}
               height={100}
-              className="w-[80px] md:w-[100px] lg:w-[150px]"
+              className="w-[80px] md:w-[100px] lg:w-[150px] hover:scale-110 transition-transform"
             />
           </Link>
         </div>

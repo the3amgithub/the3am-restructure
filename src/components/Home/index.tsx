@@ -1,6 +1,4 @@
 "use client";
-import React from "react";
-import { Layout } from "../common/Layout";
 import { useQuery } from "@apollo/client";
 import { HomeQuery } from "@/graphql/query";
 import { CustomSlider } from "../common/Slider";
@@ -9,13 +7,13 @@ import { Description } from "./Description";
 import { Specification } from "./Specification";
 import { OurArtists } from "./OurArtists";
 import { SneakPeak } from "./SneakPeak";
+import { Loader } from "../common/Loader";
 export const Home = () => {
-  const { data } = useQuery(HomeQuery);
+  const { data, loading } = useQuery(HomeQuery);
   const homeData = data?.homes?.data[0]?.attributes;
-  console.log(homeData, "himeData");
 
   return (
-    <Layout>
+    <div>
       {data && (
         <div className="flex flex-col gap-10">
           <Banner img={homeData?.banner?.data?.attributes.url} />
@@ -26,6 +24,7 @@ export const Home = () => {
           <SneakPeak />
         </div>
       )}
-    </Layout>
+      {loading && <Loader />}
+    </div>
   );
 };

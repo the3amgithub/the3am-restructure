@@ -1,9 +1,14 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
 import FavIcon from "../../public/favicon/favicon.ico";
 import { Provider } from "@/client/Provider";
-const inter = Inter({ subsets: ["latin"] });
+import { Layout } from "@/components/common/Layout";
+import { CMSContext } from "@/context";
+const inter = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+});
 export const size = {
   width: 32,
   height: 32,
@@ -27,7 +32,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Provider>{children}</Provider>
+        <Provider>
+          <CMSContext>
+            <Layout>{children}</Layout>
+          </CMSContext>
+        </Provider>
       </body>
     </html>
   );

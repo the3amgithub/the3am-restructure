@@ -9,10 +9,12 @@ export const OurArtists = ({ data }: { data: string[] }) => {
           Our Artists
         </h2>
 
-        <div className="grid grid-cols-3 mt-10 gap-8 text-left md:text-center font-semibold">
+        <div className="grid grid-cols-3 mt-10 gap-8 text-left md:text-center font-semibold ">
           {data.map((item, i) => (
             <div key={i}>
-              <h2>{item}</h2>
+              <h2 className="hover:text-red-600 hover:transition-width hover:scale-110 transition-transform">
+                {item}
+              </h2>
             </div>
           ))}
         </div>
