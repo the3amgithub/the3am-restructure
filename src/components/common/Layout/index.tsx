@@ -13,13 +13,15 @@ export const Layout = ({ children }: LayoutProp) => {
   return (
     <div
       className={twMerge(
-        "w-full h-screen flex flex-col justify-between overflow-x-hidden",
+        "w-full min-h-screen flex flex-col overflow-x-hidden",
         menuActive && "overflow-hidden"
       )}
     >
       <Header />
-      {children}
-      <Footer />
+      <div >{children}</div>
+      <div>
+        <Footer />
+      </div>
     </div>
   );
 };

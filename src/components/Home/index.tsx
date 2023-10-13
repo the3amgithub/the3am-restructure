@@ -8,20 +8,65 @@ import { Specification } from "./Specification";
 import { OurArtists } from "./OurArtists";
 import { SneakPeak } from "./SneakPeak";
 import { Loader } from "../common/Loader";
+import { useEffect, useState } from "react";
+import { UpcomingEvents } from "./UpcomingEvents";
 export const Home = () => {
   const { data, loading } = useQuery(HomeQuery);
   const homeData = data?.homes?.data[0]?.attributes;
+  const img = "/img/banner.jpg";
+  const [text, setText] = useState("join the techno revolution");
+
+  const animationSpeed = 100; // Speed in milliseconds (adjust as needed)
+
+  useEffect(() => {
+    let currentIndex = 0;
+    let isAnimating = true;
+
+    const animateText = () => {
+      if (isAnimating) {
+        setText(text.slice(0, currentIndex + 1));
+        currentIndex++;
+
+        if (currentIndex === text.length) {
+          isAnimating = false;
+          setTimeout(() => {
+            isAnimating = true;
+
+            currentIndex = 0;
+          }, 1000); // Delay before starting again (e.g., 1000ms or 1 second)
+        } else {
+          setTimeout(animateText, animationSpeed);
+        }
+      }
+    };
+
+    animateText();
+  }, []);
 
   return (
     <div>
       {data && (
-        <div className="flex flex-col gap-10">
-          <Banner img={homeData?.banner?.data?.attributes.url} />
-          <Description img={homeData?.description?.data?.attributes.url} />
-          <CustomSlider data={homeData?.carousel.data} />÷
-          <Specification img={homeData?.specification?.data?.attributes.url} />
-          <OurArtists data={homeData?.artists} />
-          <SneakPeak />
+        <div>
+          <div
+            className="absolute top-0 left-0 w-[100%] h-screen bg-no-repeat bg-cover"
+            style={{ backgroundImage: `url(${img})` }}
+          >
+            <h1 className="absolute top-[40%] left-24 text-4xl md:text-6xl font-semibold leading-[60px] md:leading-[82px]">
+              <span>{text.slice(0, 9)}</span>
+              <br />
+              <span className="font-bold text-4xl md:text-6xl text-[#ebcc60eb]">
+                {text.slice(9, 15)}
+              </span>
+              <br />
+              <span>{text.slice(15)}</span>
+            </h1>
+          </div>
+          <div className="mt-10 flex flex-col gap-10 absolute top-[100%] w-full">
+            <Description img={homeData?.description?.data?.attributes.url} />
+            <UpcomingEvents />
+            {/* <SneakPeak /> */}
+            <CustomSlider data={homeData?.carousel.data} />
+          </div>
         </div>
       )}
       {loading && <Loader />}
