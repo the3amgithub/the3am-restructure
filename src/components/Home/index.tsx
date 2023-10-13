@@ -46,12 +46,12 @@ export const Home = () => {
   }, []);
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col">
       <div
           className="h-[400px] md:h-[800px]  lg:h-screen bg-no-repeat bg-cover"
         style={{ backgroundImage: `url(${img})` }}
       >
-        <h1 className="relative top-[40%] left-10 lg:left-24 text-4xl md:text-6xl font-semibold leading-[60px] md:leading-[82px]">
+        <h1 className="relative top-[40%] left-10 lg:left-24 text-4xl md:text-6xl font-semibold leading-[50px] md:leading-[82px]">
           <span>{text.slice(0, 9)}</span>
           <br />
           <span className="font-bold text-4xl md:text-6xl text-[#ebcc60eb]">
