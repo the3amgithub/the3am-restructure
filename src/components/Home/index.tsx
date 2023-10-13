@@ -10,6 +10,8 @@ import { SneakPeak } from "./SneakPeak";
 import { Loader } from "../common/Loader";
 import { useEffect, useState } from "react";
 import { UpcomingEvents } from "./UpcomingEvents";
+import Image from "next/image";
+import { EventVideo } from "./EventVideo";
 export const Home = () => {
   const { data, loading } = useQuery(HomeQuery);
   const homeData = data?.homes?.data[0]?.attributes;
@@ -44,29 +46,26 @@ export const Home = () => {
   }, []);
 
   return (
-    <div>
+    <div className="flex flex-col gap-8">
+      <div
+        className="h-screen bg-no-repeat bg-cover"
+        style={{ backgroundImage: `url(${img})` }}
+      >
+        <h1 className="relative top-[40%] left-24 text-4xl md:text-6xl font-semibold leading-[60px] md:leading-[82px]">
+          <span>{text.slice(0, 9)}</span>
+          <br />
+          <span className="font-bold text-4xl md:text-6xl text-[#ebcc60eb]">
+            {text.slice(9, 15)}
+          </span>
+          <br />
+          <span>{text.slice(15)}</span>
+        </h1>
+      </div>
       {data && (
-        <div>
-          <div
-            className="absolute top-0 left-0 w-[100%] h-screen bg-no-repeat bg-cover"
-            style={{ backgroundImage: `url(${img})` }}
-          >
-            <h1 className="absolute top-[40%] left-24 text-4xl md:text-6xl font-semibold leading-[60px] md:leading-[82px]">
-              <span>{text.slice(0, 9)}</span>
-              <br />
-              <span className="font-bold text-4xl md:text-6xl text-[#ebcc60eb]">
-                {text.slice(9, 15)}
-              </span>
-              <br />
-              <span>{text.slice(15)}</span>
-            </h1>
-          </div>
-          <div className="mt-10 flex flex-col gap-10 absolute top-[100%] w-full">
-            <Description img={homeData?.description?.data?.attributes.url} />
-            <UpcomingEvents />
-            {/* <SneakPeak /> */}
-            <CustomSlider data={homeData?.carousel.data} />
-          </div>
+        <div className="relative mt-10 flex flex-col gap-8 w-full">
+          <Description img={homeData?.description?.data?.attributes.url} />
+          <UpcomingEvents />
+          <EventVideo />
         </div>
       )}
       {loading && <Loader />}
