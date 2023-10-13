@@ -36,9 +36,9 @@ export const Event = () => {
 
   return (
     <div className="flex flex-col ">
-      <div className="relative top-0 h-screen">
+      <div className="relative top-0 h-[400px] md:h-screen">
         <Image src={img} layout="fill" objectFit="cover" alt="Home"  />
-        <h1 className="relative top-[20%] lg:top-[40%] left-10 lg:left-24 text-4xl md:text-6xl font-semibold leading-[50px] md:leading-[82px]">
+        <h1 className="relative top-[40%] left-10 lg:left-24 text-4xl md:text-6xl font-semibold leading-[50px] md:leading-[82px]">
           <span>{text.slice(0, 8)}</span>
           <br />
           <span>{text.slice(8, 15)}</span>

@@ -23,7 +23,7 @@ export const UpcomingEvents = () => {
   ];
   const img = "/img/event-bg.jpg";
   return (
-    <div className="relative w-full h-[500px] md:h-[800px] bg-cover bg-no-repeat">
+    <div className="relative w-full h-[500px] md:h-[800px]">
       <Image src={img} layout="fill" objectFit="cover" alt="Home" />
 
       <Container>
