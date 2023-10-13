@@ -44,7 +44,7 @@ export const UpcomingEvents = () => {
               </div>
             ))}
             <div className="mt-8">
-              <PrimaryButton label="CHECK ALL" link="/" />
+              <PrimaryButton label="CHECK ALL" link="/event" />
             </div>
           </div>
         </div>
