@@ -17,7 +17,7 @@ const config: Config = {
       colors: {
         white: colors.white,
         orange: colors.orange,
-        primary: "#492b81",
+        primary: "#ebcc60eb",
         secondary: "#b72576",
         header: "#011024db",
       

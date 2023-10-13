@@ -13,7 +13,7 @@ const navLinks = [
   },
   {
     name: "Events",
-    url: "/events",
+    url: "/event",
   },
   {
     name: "Gallery",

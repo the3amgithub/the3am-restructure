@@ -29,7 +29,7 @@ export const UpcomingEvents = () => {
     >
       <Container>
         <div className="w-full mt-16 md:mt-32">
-          <h2 className="text-4xl ">
+          <h2 className="text-4xl">
             Upcoming <span className="font-bold">Events</span>
           </h2>
           <div className="mt-8 md:m-24 flex flex-col items-center">
