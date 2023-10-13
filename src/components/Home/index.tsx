@@ -47,9 +47,9 @@ export const Home = () => {
 
   return (
     <div className="flex flex-col">
-      <div className="relative h-[400px] md:h-[800px]  lg:h-screen bg-no-repeat bg-cover">
+      <div className="relative  h-screen">
         <Image src={img} layout="fill" objectFit="cover" alt="Home" />
-        <h1 className="relative top-[40%] left-10 lg:left-24 text-4xl md:text-6xl font-semibold leading-[50px] md:leading-[82px]">
+        <h1 className="relative top-[20%] lg:top-[40%] left-10 lg:left-24 text-4xl md:text-6xl font-semibold leading-[50px] md:leading-[82px]">
           <span>{text.slice(0, 9)}</span>
           <br />
           <span className="font-bold text-4xl md:text-6xl text-primary">
