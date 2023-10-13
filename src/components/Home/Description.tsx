@@ -5,7 +5,7 @@ export const Description = ({ img }: { img: string }) => {
   return (
       <Container>
         <Image
-          loader={() => myLoader(img)}
+          // loader={() => myLoader(img)}
           // src={`${process.env.NEXT_PUBLIC_API_URL_FILE}${img}`}
           src='/img/about.png'
           width={500}
