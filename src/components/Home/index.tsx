@@ -47,10 +47,8 @@ export const Home = () => {
 
   return (
     <div className="flex flex-col">
-      <div
-        className="h-[400px] md:h-[800px]  lg:h-screen bg-no-repeat bg-cover"
-        style={{ backgroundImage: `url(${img})` }}
-      >
+      <div className="relative h-[400px] md:h-[800px]  lg:h-screen bg-no-repeat bg-cover">
+        <Image src={img} layout="fill" objectFit="cover" alt="Home" />
         <h1 className="relative top-[40%] left-10 lg:left-24 text-4xl md:text-6xl font-semibold leading-[50px] md:leading-[82px]">
           <span>{text.slice(0, 9)}</span>
           <br />
