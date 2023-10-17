@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import { UpcomingEvents } from "./UpcomingEvents";
 import Image from "next/image";
 import { EventVideo } from "./EventVideo";
+import { BoilerRoom } from "./BoilerRoom";
 export const Home = () => {
   const { data, loading } = useQuery(HomeQuery);
   const homeData = data?.homes?.data[0]?.attributes;
@@ -62,6 +63,7 @@ export const Home = () => {
       {/* {data && ( */}
       <div className="relative mt-10 flex flex-col gap-8 w-full">
         <Description img={homeData?.description?.data?.attributes.url || ""} />
+        <BoilerRoom />
         <UpcomingEvents />
         <EventVideo />
       </div>

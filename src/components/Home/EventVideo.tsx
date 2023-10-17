@@ -4,11 +4,10 @@ import Link from "next/link";
 export const EventVideo = () => {
   const img = "/img/video1.jpg";
   return (
-    <div className="relative h-[200px] md:h-[400px] lg:h-[600px] -no-repeat bg-cover flex flex-col items-center bg-black opacity-80">
+    <div className="relative h-[200px] md:h-[400px] lg:h-[600px] bg-no-repeat bg-cover flex flex-col items-center bg-black opacity-90">
       <Image src={img} layout="fill" objectFit="cover" alt="Home" />
-
       <h1 className="relative mt-10 text-2xl md:text-4xl lg:text-6xl font-semibold opacity-100">
-        <span>Our</span>{" "}
+        <span>Our</span> <span>Latest</span>{" "}
         <span className="font-bold text-3xl md:text-4xl lg:text-6xl text-[#ebcc60eb]">
           Event
         </span>{" "}
