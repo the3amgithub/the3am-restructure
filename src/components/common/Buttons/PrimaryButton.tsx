@@ -11,7 +11,7 @@ export const PrimaryButton = ({ link, label }: PrimaryButtonProp) => {
   return (
     <Link
       href={link}
-      className="text-md md:text-lg px-3 md:px-6 py-2 rounded-full"
+      className="text-md md:text-lg px-3 md:px-6 py-2 rounded-full text-center font-bold w-full"
       style={gradientStyles}
     >
       {label}

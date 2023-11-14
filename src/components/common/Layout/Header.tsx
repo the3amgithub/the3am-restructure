@@ -19,10 +19,10 @@ const navLinks = [
     name: "Gallery",
     url: "/gallery",
   },
-  {
-    name: "Tickets",
-    url: "/ticket",
-  },
+  // {
+  //   name: "Tickets",
+  //   url: "/ticket",
+  // },
   {
     name: "Contact",
     url: "/contact",
@@ -36,7 +36,6 @@ export const Header = () => {
     setScrollPosition(position);
   };
 
-  console.log(scrollPosition, "scrlo");
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll, { passive: true });

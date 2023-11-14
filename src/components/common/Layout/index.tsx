@@ -13,8 +13,7 @@ export const Layout = ({ children }: LayoutProp) => {
   return (
     <div
       className={twMerge(
-        "min-h-[100vh] flex flex-col justify-between overflow-x-hidden relative",
-        menuActive && "overflow-hidden"
+        "min-h-[100vh] flex flex-col justify-between overflow-x-hidden relative bg-[#24242f]"
       )}
     >
       <Header />

@@ -1,7 +1,7 @@
 import { Event } from "@/components/Event";
 import React from "react";
 
-const EventPage = () => {
+const EventPage = () => {  
   return <Event />;
 };
 

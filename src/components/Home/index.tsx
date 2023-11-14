@@ -1,21 +1,19 @@
 "use client";
 import { useQuery } from "@apollo/client";
 import { HomeQuery } from "@/graphql/query";
-import { CustomSlider } from "../common/Slider";
-import { Banner } from "./Banner";
 import { Description } from "./Description";
-import { Specification } from "./Specification";
-import { OurArtists } from "./OurArtists";
-import { SneakPeak } from "./SneakPeak";
 import { Loader } from "../common/Loader";
 import { useEffect, useState } from "react";
 import { UpcomingEvents } from "./UpcomingEvents";
 import Image from "next/image";
 import { EventVideo } from "./EventVideo";
 import { BoilerRoom } from "./BoilerRoom";
+import { myLoader } from "@/utils/ImgLoader";
 export const Home = () => {
   const { data, loading } = useQuery(HomeQuery);
   const homeData = data?.homes?.data[0]?.attributes;
+  console.log(homeData, "homeData");
+
   const img = "/img/banner.jpg";
   const [text, setText] = useState("join the techno revolution");
 
@@ -49,7 +47,13 @@ export const Home = () => {
   return (
     <div className="flex flex-col">
       <div className="relative h-[400px] md:h-screen">
-        <Image src={img} layout="fill" objectFit="cover" alt="Home" />
+        <Image
+          loader={() => myLoader(homeData?.banner?.data?.attributes?.url || "")}
+          src={`${process.env.NEXT_PUBLIC_API_URL_FILE}${homeData?.banner?.data?.attributes?.url}`}
+          layout="fill"
+          objectFit="cover"
+          alt="Home"
+        />
         <h1 className="relative top-[40%] left-10 lg:left-24 text-4xl md:text-6xl font-semibold leading-[50px] md:leading-[82px]">
           <span>{text.slice(0, 9)}</span>
           <br />
@@ -63,11 +67,13 @@ export const Home = () => {
       {/* {data && ( */}
       <div className="relative mt-10 flex flex-col gap-8 w-full">
         <Description img={homeData?.description?.data?.attributes.url || ""} />
-        <BoilerRoom />
-        <UpcomingEvents />
-        <EventVideo />
+        {homeData?.boilerRoom && <BoilerRoom data={homeData?.boilerRoom} />}
+        {homeData?.upcomingEvents && (
+          <UpcomingEvents data={homeData?.upcomingEvents} />
+        )}
+        {homeData?.video && <EventVideo data={homeData?.video} />}
       </div>
-      {/* )} */}
+
       {loading && <Loader />}
     </div>
   );

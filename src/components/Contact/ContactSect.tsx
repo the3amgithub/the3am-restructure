@@ -33,14 +33,14 @@ export const ContactSect = ({ data }: { data: any }) => {
               </span>
             </h2>
           </div>
-          <div className="text-xs lg:text-2xl text-red-500 font-semibold w-full p-12 text-center ">
+          <div className="text-xs lg:text-2xl text-red-500 font-semibold w-full  text-center ">
             <h2> {data.moreInfo.label}</h2>
           </div>
         </div>
       )}
       {data.bookingQuery && (
         <div className="flex w-[100%] items-center ">
-          <div className="text-xs lg:text-2xl text-red-500 font-semibold w-full p-10 text-center ">
+          <div className="text-xs lg:text-2xl text-red-500 font-semibold w-full  text-center ">
             <h2> {data.bookingQuery.label}</h2>
           </div>
           <div className="bg-black w-full p-10 flex flex-col items-start hover:scale-110 transition-transform">
@@ -87,7 +87,7 @@ export const ContactSect = ({ data }: { data: any }) => {
               </span>
             </h2>
           </div>
-          <div className="text-xs lg:text-2xl text-red-500 font-semibold w-full p-10 text-center">
+          <div className="text-xs lg:text-2xl text-red-500 font-semibold w-full text-center">
             <h2> {data.conversation.label}</h2>
           </div>
         </div>

@@ -6,39 +6,25 @@ export const HomeQuery = gql`
       data {
         id
         attributes {
-          artists
           banner {
             data {
-              id
               attributes {
                 url
               }
             }
           }
-          carousel {
-            data {
-              id
-              attributes {
-                url
-              }
-            }
-          }
+          boilerRoom
+          createdAt
           description {
             data {
+              id
               attributes {
                 url
               }
-              id
             }
           }
-          specification {
-            data {
-              attributes {
-                url
-              }
-              id
-            }
-          }
+          video
+          upcomingEvents
         }
       }
     }
@@ -91,4 +77,57 @@ export const contactQuery = gql`
       }
     }
   }
+`;
+
+export const EventsQuery = gql`
+query Events {
+  events {
+    data {
+      id
+      attributes {
+        banner {
+          data {
+            attributes {
+              url
+            }
+          }
+        }
+        event_details {
+          data {
+            attributes {
+              date
+              name
+              location
+            }
+            id
+          }
+        }
+      }
+    }
+  }
+}
+`;
+export const EventDetailQuery = gql`
+query EventDetail($eventDetailId: ID) {
+  eventDetail(id: $eventDetailId) {
+    data {
+      id
+      attributes {
+        about
+        address
+        createdAt
+        date
+        img {
+          data {
+            attributes {
+              url
+            }
+          }
+        }
+        name
+        location
+      }
+    }
+  }
+}
 `;

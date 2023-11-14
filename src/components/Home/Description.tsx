@@ -5,13 +5,12 @@ export const Description = ({ img }: { img: string }) => {
   return (
     <Container>
       <Image
-        // loader={() => myLoader(img)}
-        // src={`${process.env.NEXT_PUBLIC_API_URL_FILE}${img}`}
-        src="/img/about.png"
+        loader={() => myLoader(img)}
+        src={`${process.env.NEXT_PUBLIC_API_URL_FILE}${img}`}
         width={500}
         height={500}
-        alt="banner"
-        className="w-full"
+        alt="description"
+        className="w-full "
       />
     </Container>
   );

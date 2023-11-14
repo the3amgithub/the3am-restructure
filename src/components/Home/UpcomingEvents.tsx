@@ -3,7 +3,12 @@ import { Container } from "../common/Container";
 import Image from "next/image";
 import { PrimaryButton } from "../common/Buttons/PrimaryButton";
 
-export const UpcomingEvents = () => {
+interface UpcomingEvent {
+  name: string;
+  location: string;
+  date: string;
+}
+export const UpcomingEvents = ({ data }: { data: UpcomingEvent[] }) => {
   const eventsList = [
     {
       name: "Carl Cox",
@@ -32,7 +37,7 @@ export const UpcomingEvents = () => {
             Upcoming <span className="font-bold">Events</span>
           </h2>
           <div className="relative mt-8 md:m-24 flex flex-col items-center">
-            {eventsList.map((item) => (
+            {data.map((item) => (
               <div
                 className="border-t border-b grid grid-cols-3 w-[100%] md:p-8 md:text-2xl text-center p-4 items-center"
                 key={item.name}
