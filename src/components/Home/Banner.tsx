@@ -17,17 +17,14 @@ export const Banner = ({ img }: { img: string }) => {
   return (
     <div className="bg-black">
       <Container>
-        <div className="relative flex justify-center">
+        <div className="absolute top-0 left-0 flex justify-center">
           <Image
-            loader={() => myLoader(img)}
-            src={`${process.env.NEXT_PUBLIC_API_URL_FILE}${img}`}
+            // loader={() => myLoader(img)}
+            src='/img/banner.jpg'
             width={300}
             height={500}
             alt="banner"
-            className={twMerge(
-              "transition-all duration-500 ease-in-out w-[85%]",
-               
-            )}
+            className="w-full"
           />
         </div>
       </Container>

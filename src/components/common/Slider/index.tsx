@@ -53,7 +53,7 @@ export const CustomSlider = ({ data }: { data: any }) => {
     return `${process.env.NEXT_PUBLIC_API_URL_FILE}${src}`;
   };
   return (
-    <div className="w-full h-[50px] md:h-[200px] lg:h-[550px]">
+    <div className="w-full h-[50px] md:h-[200px] lg:h-[350px]">
       <Carousel
         infiniteLoop={false}
         transitionTime={1000}
@@ -74,7 +74,6 @@ export const CustomSlider = ({ data }: { data: any }) => {
           </div>
         ))}
       </Carousel>
-      {/* </Slider> */}
     </div>
   );
 };

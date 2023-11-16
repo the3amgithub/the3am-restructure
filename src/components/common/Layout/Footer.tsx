@@ -1,10 +1,32 @@
 import Image from "next/image";
 import { Container } from "../Container";
+import {
+  TbBrandInstagram,
+  TbBrandFacebook,
+  TbBrandWhatsapp,
+  TbBrandYoutube,
+} from "react-icons/tb";
+import Link from "next/link";
+
+const socialIcons = [
+  {
+    link: <TbBrandFacebook />,
+  },
+  {
+    link: <TbBrandInstagram />,
+  },
+  {
+    link: <TbBrandWhatsapp />,
+  },
+  {
+    link: <TbBrandYoutube />,
+  },
+];
 export const Footer = () => {
   return (
-    <footer className="bg-black relative bottom-0">
+    <footer className="bg-black mt-8">
       <Container>
-        <div className="flex gap-6 items-center md:justify-between">
+        <div className="flex gap-6 items-center justify-between">
           <Image
             src="/img/logo_white.png"
             width={200}
@@ -12,12 +34,16 @@ export const Footer = () => {
             alt="logo"
             className="w-[80px] md:w-[120px] lg:w-[200px]"
           />
-          <span className="text-center text-[10px] md:text-sm">All rights reserved © 2023</span>
-          <div className="flex flex-col gap-2 text-[10px] md:text-lg">
-            <a>info@the3amproject.com</a>
-            <h2>+917018505259</h2>
-            <h2>Chandigarh, India</h2>
-          </div>
+          <span className="text-center text-[10px] md:text-sm">
+            All rights reserved © 2023
+          </span>
+          <p className="flex gap-2 lg:gap-4">
+            {socialIcons.map((item, i) => (
+              <Link href="/a" className="text-xl cursor-pointer hover:text-red-500" key={i}>
+                {item.link}
+              </Link>
+            ))}
+          </p>
         </div>
       </Container>
     </footer>

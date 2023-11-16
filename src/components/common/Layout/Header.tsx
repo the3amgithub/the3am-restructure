@@ -1,9 +1,10 @@
 "use client";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "../Container";
 import { CMSModal } from "@/context";
+import { twMerge } from "tailwind-merge";
 
 const navLinks = [
   {
@@ -11,12 +12,16 @@ const navLinks = [
     url: "/",
   },
   {
+    name: "Events",
+    url: "/events",
+  },
+  {
     name: "Gallery",
     url: "/gallery",
   },
   {
-    name: "Explore",
-    url: "/explore",
+    name: "Tickets",
+    url: "/ticket",
   },
   {
     name: "Contact",
@@ -25,10 +30,30 @@ const navLinks = [
 ];
 export const Header = () => {
   const { menuActive, setMenuActive } = useContext(CMSModal);
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const handleScroll = () => {
+    const position = window.pageYOffset;
+    setScrollPosition(position);
+  };
+
+  console.log(scrollPosition, "scrlo");
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
-    <header className="bg-black">
+    <header
+      className={twMerge(
+        "fixed bg-transparent z-[999] opacity-[.8] w-full",
+        scrollPosition > 30 && "bg-black"
+      )}
+    >
       <Container>
-        <div className="flex justify-between items-center text-white">
+        <div className="flex justify-between items-center">
           <Link href="/">
             <Image
               src="/img/logo_white.png"
@@ -38,7 +63,7 @@ export const Header = () => {
               className="w-[80px] md:w-[120px] lg:w-[120px] h-[100px]"
             />
           </Link>
-          <div className="hidden lg:flex gap-32 font-semibold">
+          <div className="hidden lg:flex gap-20 font-semibold">
             {navLinks.map((item) => (
               <Link href={item.url} key={item.name}>
                 {item.name}
