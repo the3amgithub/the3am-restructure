@@ -12,9 +12,6 @@ import { myLoader } from "@/utils/ImgLoader";
 export const Home = () => {
   const { data, loading } = useQuery(HomeQuery);
   const homeData = data?.homes?.data[0]?.attributes;
-  console.log(homeData, "homeData");
-
-  const img = "/img/banner.jpg";
   const [text, setText] = useState("join the techno revolution");
 
   const animationSpeed = 100; // Speed in milliseconds (adjust as needed)
@@ -45,36 +42,39 @@ export const Home = () => {
   }, []);
 
   return (
-    <div className="flex flex-col">
-      <div className="relative h-[400px] md:h-screen">
-        <Image
-          loader={() => myLoader(homeData?.banner?.data?.attributes?.url || "")}
-          src={`${process.env.NEXT_PUBLIC_API_URL_FILE}${homeData?.banner?.data?.attributes?.url}`}
-          layout="fill"
-          objectFit="cover"
-          alt="Home"
-        />
-        <h1 className="relative top-[40%] left-10 lg:left-24 text-4xl md:text-6xl font-semibold leading-[50px] md:leading-[82px]">
-          <span>{text.slice(0, 9)}</span>
-          <br />
-          <span className="font-bold text-4xl md:text-6xl text-primary">
-            {text.slice(9, 15)}
-          </span>
-          <br />
-          <span>{text.slice(15)}</span>
-        </h1>
-      </div>
-      {/* {data && ( */}
-      <div className="relative mt-10 flex flex-col gap-8 w-full">
-        <Description img={homeData?.description?.data?.attributes.url || ""} />
-        {homeData?.boilerRoom && <BoilerRoom data={homeData?.boilerRoom} />}
-        {homeData?.upcomingEvents && (
-          <UpcomingEvents data={homeData?.upcomingEvents} />
-        )}
-        {homeData?.video && <EventVideo data={homeData?.video} />}
-      </div>
-
+    <>
+      {data && (
+        <div className="flex flex-col">
+          <div className="relative h-[400px] md:h-screen">
+            <Image
+              loader={() => myLoader(homeData?.banner || "")}
+              src={`${process.env.NEXT_PUBLIC_API_URL_FILE}${homeData?.banner}`}
+              layout="fill"
+              objectFit="cover"
+              alt="Home"
+            />
+            <h1 className="relative top-[40%] left-10 lg:left-24 text-4xl md:text-6xl font-semibold leading-[50px] md:leading-[82px]">
+              <span>{text.slice(0, 9)}</span>
+              <br />
+              <span className="font-bold text-4xl md:text-6xl text-primary">
+                {text.slice(9, 15)}
+              </span>
+              <br />
+              <span>{text.slice(15)}</span>
+            </h1>
+          </div>
+          {/* {data && ( */}
+          <div className="relative mt-10 flex flex-col gap-8 w-full">
+            <Description img={homeData?.description || ""} />
+            {homeData?.boilerRoom && <BoilerRoom data={homeData?.boilerRoom} />}
+            {homeData?.upcomingEvents && (
+              <UpcomingEvents data={homeData?.upcomingEvents} />
+            )}
+            {homeData?.video && <EventVideo data={homeData?.video} />}
+          </div>
+        </div>
+      )}
       {loading && <Loader />}
-    </div>
+    </>
   );
 };

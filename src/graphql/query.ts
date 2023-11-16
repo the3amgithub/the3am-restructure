@@ -1,34 +1,21 @@
 import { gql } from "@apollo/client";
 
 export const HomeQuery = gql`
-  query Homes {
-    homes {
-      data {
-        id
-        attributes {
-          banner {
-            data {
-              attributes {
-                url
-              }
-            }
-          }
-          boilerRoom
-          createdAt
-          description {
-            data {
-              id
-              attributes {
-                url
-              }
-            }
-          }
-          video
-          upcomingEvents
-        }
+query Homes {
+  homes {
+    data {
+      id
+      attributes {
+        banner
+        boilerRoom
+        createdAt
+        description
+        upcomingEvents
+        video
       }
     }
   }
+}
 `;
 
 export const galleyQuery = gql`
@@ -60,23 +47,17 @@ export const galleyQuery = gql`
 `;
 
 export const contactQuery = gql`
-  query Contacts {
-    contacts {
-      data {
-        id
-        attributes {
-          banner {
-            data {
-              attributes {
-                url
-              }
-            }
-          }
-          information
-        }
+query Contacts {
+  contacts {
+    data {
+      id
+      attributes {
+        banner
+        information
       }
     }
   }
+}
 `;
 
 export const EventsQuery = gql`
@@ -85,19 +66,13 @@ query Events {
     data {
       id
       attributes {
-        banner {
-          data {
-            attributes {
-              url
-            }
-          }
-        }
+        banner
         event_details {
           data {
             attributes {
-              date
               name
               location
+              date
             }
             id
           }
@@ -115,15 +90,8 @@ query EventDetail($eventDetailId: ID) {
       attributes {
         about
         address
-        createdAt
+        img
         date
-        img {
-          data {
-            attributes {
-              url
-            }
-          }
-        }
         name
         location
       }

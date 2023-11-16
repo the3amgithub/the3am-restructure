@@ -38,31 +38,32 @@ export const Contact = () => {
   }, []);
   return (
     <>
-      <div className="relative top-0 h-[400px] md:h-screen">
-        <Image
-          loader={() =>
-            myLoader(contactData?.banner?.data?.attributes?.url || "")
-          }
-          src={`${process.env.NEXT_PUBLIC_API_URL_FILE}${contactData?.banner?.data?.attributes?.url}`}
-          layout="fill"
-          objectFit="cover"
-          alt="Home"
-        />
-        <h1 className="relative top-[40%] left-10 lg:left-24 text-4xl md:text-6xl font-semibold leading-[50px] md:leading-[82px]">
-          <span>{text.slice(0, 6)}</span>
-          <br />
-          <span>{text.slice(7, 15)}</span>
-          <br />
-          <span className="font-bold text-4xl md:text-6xl text-primary">
-            {text.slice(15)}
-          </span>
-        </h1>
-      </div>
       {data && (
-        <div className="flex flex-col gap-10">
-          <ContactSect data={contactData.information} />
-        </div>
+        <>
+          <div className="relative top-0 h-[400px] md:h-screen">
+            <Image
+              loader={() => myLoader(contactData?.banner || "")}
+              src={`${process.env.NEXT_PUBLIC_API_URL_FILE}${contactData?.banner}`}
+              layout="fill"
+              objectFit="cover"
+              alt="Home"
+            />
+            <h1 className="relative top-[40%] left-10 lg:left-24 text-4xl md:text-6xl font-semibold leading-[50px] md:leading-[82px]">
+              <span>{text.slice(0, 6)}</span>
+              <br />
+              <span>{text.slice(7, 15)}</span>
+              <br />
+              <span className="font-bold text-4xl md:text-6xl text-primary">
+                {text.slice(15)}
+              </span>
+            </h1>
+          </div>
+          <div className="flex flex-col gap-10">
+            <ContactSect data={contactData.information} />
+          </div>
+        </>
       )}
+
       {loading && <Loader />}
     </>
   );
