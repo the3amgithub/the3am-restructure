@@ -10,14 +10,8 @@ export const Galley = () => {
   const galleryData = data?.galleries?.data[0]?.attributes;
 
   return (
-    <div>
-      {data && (
-        <div className="flex flex-col gap-10">
-          <Banner img={galleryData?.banner?.data?.attributes.url} />
-          <GallerySect data={galleryData?.eventsList?.data} />
-        </div>
-      )}
-      {loading && <Loader />}
+    <div className="mt-[20%]">
+      <h2 className="text-center text-2xl font-bold">Coming Soon !!!!!!</h2>
     </div>
   );
 };
