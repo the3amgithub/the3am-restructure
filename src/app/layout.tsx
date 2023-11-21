@@ -31,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Head>
-        <link rel="shortcut icon" href="/favicon/favicon.ico" />
+        <link rel="shortcut icon" sizes="180x180" href="/favicon/favicon.ico" />
         <meta property="og:image" content="../../public/favicon/favicon.ico" />
       </Head>
       <body className={inter.className}>

@@ -39,7 +39,7 @@ export const Footer = () => {
           </span>
           <p className="flex gap-2 lg:gap-4">
             {socialIcons.map((item, i) => (
-              <Link href="/a" className="text-xl cursor-pointer hover:text-red-500" key={i}>
+              <Link href="/a" className="text-xl cursor-pointer hover:text-red-500" key={i} aria-label="navigate to social platform">
                 {item.link}
               </Link>
             ))}

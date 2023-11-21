@@ -23,7 +23,7 @@ export const EventVideo = ({
         </span>{" "}
         <span>Video</span>
       </h1>
-      <Link target="_blank" href={data.link} className="relative">
+      <Link target="_blank" href={data.link} className="relative" aria-label="opeb the new tab">
         <Image
           src="/img/play.png"
           width={90}

@@ -88,6 +88,7 @@ export const Event = () => {
                       pathname: `/event/${item.attributes.name}`,
                       query: { a: item.id },
                     }}
+                    aria-label="navigate to selected event"
                   >
                     <span>{item.attributes.date}</span>
                     <h2 className="font-bold">{item.attributes.name}</h2>

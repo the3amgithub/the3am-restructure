@@ -49,6 +49,9 @@ export const Home = () => {
             <Image
               loader={() => myLoader(homeData?.banner || "")}
               src={`${process.env.NEXT_PUBLIC_API_URL_FILE}${homeData?.banner}`}
+              loading="lazy"
+              decoding="async"
+              data-nimg="fill"
               layout="fill"
               objectFit="cover"
               alt="Home"

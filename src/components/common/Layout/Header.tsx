@@ -36,7 +36,6 @@ export const Header = () => {
     setScrollPosition(position);
   };
 
-
   useEffect(() => {
     window.addEventListener("scroll", handleScroll, { passive: true });
 
@@ -53,7 +52,7 @@ export const Header = () => {
     >
       <Container>
         <div className="flex justify-between items-center">
-          <Link href="/">
+          <Link href="/" aria-label="navigate to home page">
             <Image
               src="/img/logo_white.png"
               width={120}
@@ -64,7 +63,11 @@ export const Header = () => {
           </Link>
           <div className="hidden lg:flex gap-20 font-semibold">
             {navLinks.map((item) => (
-              <Link href={item.url} key={item.name}>
+              <Link
+                href={item.url}
+                key={item.name}
+                aria-label="navigate to selected page"
+              >
                 {item.name}
               </Link>
             ))}
@@ -100,6 +103,7 @@ export const Header = () => {
                     <Link
                       href={item.url}
                       key={item.name}
+                      aria-label="navigate to selected page"
                       onClick={() => setMenuActive(false)}
                     >
                       {item.name}
