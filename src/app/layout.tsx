@@ -9,12 +9,10 @@ const inter = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
 });
-export const size = {
-  width: 32,
-  height: 32,
-};
+
 export const metadata: Metadata = {
   title: "THE 3:AM PROJECT",
+  description:"THE 3:AM PROJECT",
   icons: [
     {
       rel: "icon",

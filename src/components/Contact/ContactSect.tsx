@@ -33,18 +33,18 @@ export const ContactSect = ({ data }: { data: any }) => {
               </span>
             </h2>
           </div>
-          <div className="text-xs lg:text-2xl text-red-500 font-semibold w-full  text-center ">
+          <div className="text-xs lg:text-2xl text-red-500 font-semibold w-full text-center p-2">
             <h2> {data.moreInfo.label}</h2>
           </div>
         </div>
       )}
       {data.bookingQuery && (
         <div className="flex w-[100%] items-center ">
-          <div className="text-xs lg:text-2xl text-red-500 font-semibold w-full  text-center ">
+          <div className="text-xs lg:text-2xl text-red-500 font-semibold w-full p-2 text-center">
             <h2> {data.bookingQuery.label}</h2>
           </div>
           <div className="bg-black w-full p-10 flex flex-col items-start hover:scale-110 transition-transform">
-            <h2 className="text-xs lg:text-lg flex gap-2 items-center">
+            <h2 className="text-xs lg:text-lg flex gap-2 items-center ">
               {data.bookingQuery.email}
               <span>
                 <Image
@@ -74,7 +74,7 @@ export const ContactSect = ({ data }: { data: any }) => {
                 />
               </span>
             </h2>
-            <h2 className="text-xs lg:text-lg  flex gap-2 items-center">
+            <h2 className="text-xs lg:text-lg flex gap-2 items-center">
               {data.conversation.email2}
               <span>
                 <Image
@@ -87,8 +87,8 @@ export const ContactSect = ({ data }: { data: any }) => {
               </span>
             </h2>
           </div>
-          <div className="text-xs lg:text-2xl text-red-500 font-semibold w-full text-center">
-            <h2> {data.conversation.label}</h2>
+          <div className="text-xs lg:text-2xl text-red-500 font-semibold w-full text-center p-2">
+            <h2>{data.conversation.label}</h2>
           </div>
         </div>
       )}
