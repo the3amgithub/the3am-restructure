@@ -9,7 +9,6 @@ import Image from "next/image";
 import { EventVideo } from "./EventVideo";
 import { BoilerRoom } from "./BoilerRoom";
 import { myLoader } from "@/utils/ImgLoader";
-import { DefaultSeo } from "next-seo";
 export const Home = () => {
   const { data, loading } = useQuery(HomeQuery);
   const homeData = data?.homes?.data[0]?.attributes;
