@@ -52,7 +52,7 @@ export const Header = () => {
     >
       <Container>
         <div className="flex justify-between items-center">
-          <Link href="/" aria-label="navigate to home page">
+          <Link href="/" aria-label="navigate to Home page">
             <Image
               src="/img/logo_white.png"
               width={120}
