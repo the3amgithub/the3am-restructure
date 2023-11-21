@@ -66,7 +66,7 @@ export const Header = () => {
               <Link
                 href={item.url}
                 key={item.name}
-                aria-label="navigate to selected page"
+                aria-label={`navigate to ${item.name} page`}
               >
                 {item.name}
               </Link>
@@ -103,7 +103,7 @@ export const Header = () => {
                     <Link
                       href={item.url}
                       key={item.name}
-                      aria-label="navigate to selected page"
+                      aria-label={`navigate to ${item.name} page`}
                       onClick={() => setMenuActive(false)}
                     >
                       {item.name}
