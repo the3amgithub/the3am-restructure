@@ -1,48 +1,21 @@
 import { gql } from "@apollo/client";
 
 export const HomeQuery = gql`
-  query Homes {
-    homes {
-      data {
-        id
-        attributes {
-          artists
-          banner {
-            data {
-              id
-              attributes {
-                url
-              }
-            }
-          }
-          carousel {
-            data {
-              id
-              attributes {
-                url
-              }
-            }
-          }
-          description {
-            data {
-              attributes {
-                url
-              }
-              id
-            }
-          }
-          specification {
-            data {
-              attributes {
-                url
-              }
-              id
-            }
-          }
-        }
+query Homes {
+  homes {
+    data {
+      id
+      attributes {
+        banner
+        boilerRoom
+        createdAt
+        description
+        upcomingEvents
+        video
       }
     }
   }
+}
 `;
 
 export const galleyQuery = gql`
@@ -74,21 +47,55 @@ export const galleyQuery = gql`
 `;
 
 export const contactQuery = gql`
-  query Contacts {
-    contacts {
-      data {
-        id
-        attributes {
-          banner {
-            data {
-              attributes {
-                url
-              }
+query Contacts {
+  contacts {
+    data {
+      id
+      attributes {
+        banner
+        information
+      }
+    }
+  }
+}
+`;
+
+export const EventsQuery = gql`
+query Events {
+  events {
+    data {
+      id
+      attributes {
+        banner
+        event_details {
+          data {
+            attributes {
+              name
+              location
+              date
             }
+            id
           }
-          information
         }
       }
     }
   }
+}
+`;
+export const EventDetailQuery = gql`
+query EventDetail($eventDetailId: ID) {
+  eventDetail(id: $eventDetailId) {
+    data {
+      id
+      attributes {
+        about
+        address
+        img
+        date
+        name
+        location
+      }
+    }
+  }
+}
 `;

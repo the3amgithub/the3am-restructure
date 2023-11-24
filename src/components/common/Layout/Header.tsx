@@ -13,15 +13,11 @@ const navLinks = [
   },
   {
     name: "Events",
-    url: "/events",
+    url: "/event",
   },
   {
     name: "Gallery",
     url: "/gallery",
-  },
-  {
-    name: "Tickets",
-    url: "/ticket",
   },
   {
     name: "Contact",
@@ -35,8 +31,6 @@ export const Header = () => {
     const position = window.pageYOffset;
     setScrollPosition(position);
   };
-
-  console.log(scrollPosition, "scrlo");
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -54,18 +48,25 @@ export const Header = () => {
     >
       <Container>
         <div className="flex justify-between items-center">
-          <Link href="/">
+          <Link
+            href="/"
+            aria-label="navigate to Home page"
+            className="relative w-[100px] md:w-[120px] h-[100px] md:w-[120px]"
+          >
             <Image
               src="/img/logo_white.png"
-              width={120}
-              height={100}
+              layout="fill"
+              objectFit="contain"
               alt="logo"
-              className="w-[80px] md:w-[120px] lg:w-[120px] h-[100px]"
             />
           </Link>
           <div className="hidden lg:flex gap-20 font-semibold">
             {navLinks.map((item) => (
-              <Link href={item.url} key={item.name}>
+              <Link
+                href={item.url}
+                key={item.name}
+                aria-label={`navigate to ${item.name} page`}
+              >
                 {item.name}
               </Link>
             ))}
@@ -101,6 +102,7 @@ export const Header = () => {
                     <Link
                       href={item.url}
                       key={item.name}
+                      aria-label={`navigate to ${item.name} page`}
                       onClick={() => setMenuActive(false)}
                     >
                       {item.name}
