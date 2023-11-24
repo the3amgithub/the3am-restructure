@@ -44,7 +44,7 @@ export const Contact = () => {
             <Image
               loader={() => myLoader(contactData?.banner || "")}
               src={`${process.env.NEXT_PUBLIC_API_URL_FILE}${contactData?.banner}`}
-              layout="fill"
+              fill
               objectFit="cover"
               alt="Home"
             />

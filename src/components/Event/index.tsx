@@ -60,8 +60,7 @@ export const Event = () => {
             <Image
               loader={() => myLoader(eventsData?.banner || "")}
               src={`${process.env.NEXT_PUBLIC_API_URL_FILE}${eventsData?.banner}`}
-              layout="fill"
-              objectFit="cover"
+fill              objectFit="cover"
               alt="Home"
             />
             <h1 className="relative top-[40%] left-10 lg:left-24 text-4xl md:text-6xl font-semibold leading-[50px] md:leading-[82px]">

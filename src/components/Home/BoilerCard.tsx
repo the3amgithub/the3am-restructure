@@ -10,7 +10,7 @@ export const BoilerCard = ({ img, label }: BoilerCardProp) => {
       <Image
         loader={() => myLoader(img)}
         src={`${process.env.NEXT_PUBLIC_API_URL_FILE}${img}`}
-        layout="fill"
+        fill
         objectFit="cover"
         alt="artists"
       />

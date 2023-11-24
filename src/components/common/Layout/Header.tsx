@@ -19,10 +19,6 @@ const navLinks = [
     name: "Gallery",
     url: "/gallery",
   },
-  // {
-  //   name: "Tickets",
-  //   url: "/ticket",
-  // },
   {
     name: "Contact",
     url: "/contact",
@@ -52,13 +48,16 @@ export const Header = () => {
     >
       <Container>
         <div className="flex justify-between items-center">
-          <Link href="/" aria-label="navigate to Home page">
+          <Link
+            href="/"
+            aria-label="navigate to Home page"
+            className="relative w-[100px] md:w-[120px] h-[100px] md:w-[120px]"
+          >
             <Image
               src="/img/logo_white.png"
-              width={120}
-              height={100}
+              layout="fill"
+              objectFit="contain"
               alt="logo"
-              className="w-[80px] md:w-[120px] lg:w-[120px] h-[100px]"
             />
           </Link>
           <div className="hidden lg:flex gap-20 font-semibold">

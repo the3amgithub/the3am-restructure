@@ -42,7 +42,7 @@ export const DetailEvent = () => {
             <Image
               loader={() => myLoader(eventData?.img || "")}
               src={`${process.env.NEXT_PUBLIC_API_URL_FILE}${eventData?.img}`}
-              layout="fill"
+              fill
               objectFit="cover"
               alt="Home"
             />
