@@ -1,6 +1,7 @@
 "use client";
 import { PrimaryButton } from "@/components/common/Buttons/PrimaryButton";
 import { Container } from "@/components/common/Container";
+import { Layout } from "@/components/common/Layout";
 import { Loader } from "@/components/common/Loader";
 import { EventDetailQuery } from "@/graphql/query";
 import { myLoader } from "@/utils/ImgLoader";
@@ -37,7 +38,7 @@ export const DetailEvent = () => {
   return (
     <>
       {data && (
-        <>
+        <Layout>
           <div className="relative top-0 h-[400px] md:h-screen flex flex-col justify-center">
             <Image
               loader={() => myLoader(eventData?.img || "")}
@@ -95,7 +96,7 @@ export const DetailEvent = () => {
               </div>
             </div>
           </Container>
-        </>
+        </Layout>
       )}
       {loading && <Loader />}
     </>

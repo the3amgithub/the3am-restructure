@@ -15,6 +15,8 @@ export const Provider = ({ children }: { children: React.ReactNode }) => {
       },
     }),
     cache: new InMemoryCache(),
+    ssrMode: typeof window === 'undefined',
+
   });
   return <ApolloProvider client={client}>{children}</ApolloProvider>;
 };
