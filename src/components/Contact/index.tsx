@@ -6,6 +6,7 @@ import { ContactSect } from "./ContactSect";
 import { Loader } from "../common/Loader";
 import { myLoader } from "@/utils/ImgLoader";
 import Image from "next/image";
+import { Layout } from "../common/Layout";
 export const Contact = () => {
   const [text, setText] = useState("Get In Touch");
   const { data, loading } = useQuery(contactQuery);
@@ -39,7 +40,7 @@ export const Contact = () => {
   return (
     <>
       {data && (
-        <>
+        <Layout>
           <div className="relative top-0 h-[400px] md:h-screen">
             <Image
               loader={() => myLoader(contactData?.banner || "")}
@@ -61,7 +62,7 @@ export const Contact = () => {
           <div className="flex flex-col gap-10">
             <ContactSect data={contactData.information} />
           </div>
-        </>
+        </Layout>
       )}
 
       {loading && <Loader />}

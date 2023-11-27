@@ -36,9 +36,7 @@ export default function RootLayout({
       </Head>
       <body className={inter.className}>
         <Provider>
-          <CMSContext>
-            <Layout>{children}</Layout>
-          </CMSContext>
+          <CMSContext>{children}</CMSContext>
         </Provider>
       </body>
     </html>

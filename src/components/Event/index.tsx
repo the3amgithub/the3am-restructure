@@ -7,6 +7,7 @@ import { EventsQuery } from "@/graphql/query";
 import { useQuery } from "@apollo/client";
 import { myLoader } from "@/utils/ImgLoader";
 import { Loader } from "../common/Loader";
+import { Layout } from "../common/Layout";
 export interface EventList {
   id: string;
   attributes: {
@@ -55,12 +56,13 @@ export const Event = () => {
   return (
     <>
       {data && (
-        <>
+        <Layout>
           <div className="relative top-0 h-[400px] md:h-screen">
             <Image
               loader={() => myLoader(eventsData?.banner || "")}
               src={`${process.env.NEXT_PUBLIC_API_URL_FILE}${eventsData?.banner}`}
-fill              objectFit="cover"
+              fill
+              objectFit="cover"
               alt="Home"
             />
             <h1 className="relative top-[40%] left-10 lg:left-24 text-4xl md:text-6xl font-semibold leading-[50px] md:leading-[82px]">
@@ -99,7 +101,7 @@ fill              objectFit="cover"
               </div>
             </div>
           </Container>
-        </>
+        </Layout>
       )}
       {loading && <Loader />}
     </>
