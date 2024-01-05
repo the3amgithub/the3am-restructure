@@ -8,9 +8,12 @@ import { myLoader } from "@/utils/ImgLoader";
 import { useQuery } from "@apollo/client";
 import { GoogleMap, useLoadScript } from "@react-google-maps/api";
 import Image from "next/image";
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useMemo } from "react";
-
+const gradientStyles = {
+  backgroundImage: "linear-gradient(-45deg, #c1089e 20%, #ff4e00 100%)",
+};
 export const DetailEvent = () => {
   const searchParams = useSearchParams();
   const search = searchParams.get("a");
@@ -71,8 +74,27 @@ export const DetailEvent = () => {
                       <span>Venue</span>
                       <span>{eventData?.location}</span>
                     </div>
-                    <div>
-                      <PrimaryButton label="Book Ticket" link={eventData?.bookingLink} target="_blank" />
+                    <div className="flex gap-4 items-center">
+                      <PrimaryButton
+                        label="Book Ticket"
+                        link={eventData?.bookingLink}
+                        target="_blank"
+                      />
+                      <Link
+                        href="https://wa.me/+917018505259"
+                        target="_blank"
+                        className="flex gap-2 items-center text-md md:text-lg px-3 md:px-6 py-2 rounded-full text-center font-bold w-[350px]"
+                        style={gradientStyles}
+                      >
+                        Get In Touch
+                        <Image
+                          src="/img/whatsapp.png"
+                          width={20}
+                          height={20}
+                          alt="whtsapp"
+                          className="w-[20px] md:[w-25px]"
+                        />
+                      </Link>
                     </div>
                   </div>
                 </div>
