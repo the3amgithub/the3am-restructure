@@ -104,6 +104,50 @@ export const DetailEvent = () => {
                   </h1>
                   <p>{eventData?.about}</p>
                 </div>
+                <div className="flex flex-col">
+                  <h1 className="text-2xl md:text-4xl">
+                    About{" "}
+                    <span className="font-bold text-primary">Artists</span>
+                  </h1>
+                  <div className="flex flex-col gap-2">
+                    <li className="flex items-center gap-2">
+                      Kahani{" "}
+                      <Link href="https://www.instagram.com/kahanimusic?igsh=N2ViNmM2MDRjNw==" target="_blank">
+                        <Image
+                          src="/img/instagram.png"
+                          width={20}
+                          height={20}
+                          alt="whtsapp"
+                          className="w-[20px] md:[w-25px]"
+                        />
+                      </Link>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      Kunal Merchant{" "}
+                      <Link href="https://www.instagram.com/kunalmerchant?igsh=N2ViNmM2MDRjNw==" target="_blank">
+                        <Image
+                          src="/img/instagram.png"
+                          width={20}
+                          height={20}
+                          alt="whtsapp"
+                          className="w-[20px] md:[w-25px]"
+                        />
+                      </Link>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      Ethyr{" "}
+                      <Link href="https://www.instagram.com/ethyrmusic?igsh=N2ViNmM2MDRjNw==" target="_blank">
+                        <Image
+                          src="/img/instagram.png"
+                          width={20}
+                          height={20}
+                          alt="whtsapp"
+                          className="w-[20px] md:[w-25px]"
+                        />
+                      </Link>
+                    </li>{" "}
+                  </div>
+                </div>
               </div>
               <div className="flex justify-center w-full h-full">
                 {/* {!isLoaded ? (
