@@ -52,8 +52,8 @@ export const DetailEvent = () => {
             </h1>
           </div>
           <Container>
-            <div className="flex flex-col  mt-20 gap-8 lg:flex-row">
-              <div className="flex-1 flex flex-col gap-10">
+            <div className="flex flex-col  mt-20 gap-8 lg:flex-row justify-between">
+              <div className="flex flex-col gap-10">
                 <div className="flex flex-col gap-4 items-center lg:flex-row">
                   <Image
                     loader={() => myLoader(eventData?.img || "")}
@@ -72,7 +72,7 @@ export const DetailEvent = () => {
                       <span>{eventData?.location}</span>
                     </div>
                     <div>
-                      <PrimaryButton label="Ticket" link="/" />
+                      <PrimaryButton label="Book Ticket" link={eventData?.bookingLink} target="_blank" />
                     </div>
                   </div>
                 </div>
@@ -83,8 +83,8 @@ export const DetailEvent = () => {
                   <p>{eventData?.about}</p>
                 </div>
               </div>
-              <div className="flex-1 w-full h-full">
-                {!isLoaded ? (
+              <div className="flex justify-center w-full h-full">
+                {/* {!isLoaded ? (
                   <h1>Loading...</h1>
                 ) : (
                   <GoogleMap
@@ -92,7 +92,15 @@ export const DetailEvent = () => {
                     center={center}
                     zoom={10}
                   />
-                )}
+                )} */}
+                <Image
+                  loader={() => myLoader(eventData?.tableImg || "")}
+                  src={`${process.env.NEXT_PUBLIC_API_URL_FILE}${eventData?.tableImg}`}
+                  width={500}
+                  height={500}
+                  alt="Home"
+                  className="w-[500px] lg:h-[600px] object-contain lg:ml-10"
+                />
               </div>
             </div>
           </Container>

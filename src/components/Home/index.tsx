@@ -80,9 +80,9 @@ export const Home = () => {
               {homeData?.boilerRoom && (
                 <BoilerRoom data={homeData?.boilerRoom} />
               )}
-              {homeData?.upcomingEvents && (
-                <UpcomingEvents data={homeData?.upcomingEvents} />
-              )}
+
+              <UpcomingEvents />
+
               {homeData?.video && <EventVideo data={homeData?.video} />}
             </div>
           </div>
