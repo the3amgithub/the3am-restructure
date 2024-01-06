@@ -95,6 +95,8 @@ query EventDetail($eventDetailId: ID) {
         location
         tableImg
         bookingLink
+        waLink
+        artists
       }
     }
   }

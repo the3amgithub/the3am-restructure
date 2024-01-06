@@ -23,9 +23,10 @@ export const DetailEvent = () => {
     },
   });
   const eventData = data?.eventDetail?.data?.attributes;
-  const { isLoaded } = useLoadScript({
-    googleMapsApiKey: "AIzaSyDGjR7kqAFRiZ6hVluT9LhshR7_wvqOEug",
-  });
+
+  // const { isLoaded } = useLoadScript({
+  //   googleMapsApiKey: "AIzaSyDGjR7kqAFRiZ6hVluT9LhshR7_wvqOEug",
+  // });
   const center = useMemo(
     () => ({
       lat: parseFloat(eventData?.address?.lat),
@@ -81,7 +82,7 @@ export const DetailEvent = () => {
                         target="_blank"
                       />
                       <Link
-                        href="https://wa.me/+917018505259"
+                        href={eventData?.waLink}
                         target="_blank"
                         className="flex gap-2 items-center text-md md:text-lg px-3 md:px-6 py-2 rounded-full text-center font-bold w-[350px]"
                         style={gradientStyles}
@@ -110,42 +111,25 @@ export const DetailEvent = () => {
                     <span className="font-bold text-primary">Artists</span>
                   </h1>
                   <div className="flex flex-col gap-2">
-                    <li className="flex items-center gap-2">
-                      Kahani{" "}
-                      <Link href="https://www.instagram.com/kahanimusic?igsh=N2ViNmM2MDRjNw==" target="_blank">
-                        <Image
-                          src="/img/instagram.png"
-                          width={20}
-                          height={20}
-                          alt="whtsapp"
-                          className="w-[20px] md:[w-25px]"
-                        />
-                      </Link>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      Kunal Merchant{" "}
-                      <Link href="https://www.instagram.com/kunalmerchant?igsh=N2ViNmM2MDRjNw==" target="_blank">
-                        <Image
-                          src="/img/instagram.png"
-                          width={20}
-                          height={20}
-                          alt="whtsapp"
-                          className="w-[20px] md:[w-25px]"
-                        />
-                      </Link>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      Ethyr{" "}
-                      <Link href="https://www.instagram.com/ethyrmusic?igsh=N2ViNmM2MDRjNw==" target="_blank">
-                        <Image
-                          src="/img/instagram.png"
-                          width={20}
-                          height={20}
-                          alt="whtsapp"
-                          className="w-[20px] md:[w-25px]"
-                        />
-                      </Link>
-                    </li>{" "}
+                    {eventData.artists.map(
+                      (item: { name: string; insta: string }, i: number) => (
+                        <li className="flex items-center gap-2" key={i}>
+                         {item?.name}
+                          <Link
+                            href={item?.insta}
+                            target="_blank"
+                          >
+                            <Image
+                              src="/img/instagram.png"
+                              width={20}
+                              height={20}
+                              alt="whtsapp"
+                              className="w-[20px] md:[w-25px]"
+                            />
+                          </Link>
+                        </li>
+                      )
+                    )}
                   </div>
                 </div>
               </div>
