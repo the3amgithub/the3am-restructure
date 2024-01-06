@@ -13,7 +13,7 @@ import { Layout } from "../common/Layout";
 export const Home = () => {
   const { data, loading } = useQuery(HomeQuery);
   const homeData = data?.homes?.data[0]?.attributes;
-  const [text, setText] = useState("join the techno revolution");
+  const [text, setText] = useState("Join The Techno Revolution");
 
   const animationSpeed = 100; // Speed in milliseconds (adjust as needed)
 
@@ -80,9 +80,9 @@ export const Home = () => {
               {homeData?.boilerRoom && (
                 <BoilerRoom data={homeData?.boilerRoom} />
               )}
-              {homeData?.upcomingEvents && (
-                <UpcomingEvents data={homeData?.upcomingEvents} />
-              )}
+
+              <UpcomingEvents />
+
               {homeData?.video && <EventVideo data={homeData?.video} />}
             </div>
           </div>

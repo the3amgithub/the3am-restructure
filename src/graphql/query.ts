@@ -10,7 +10,6 @@ query Homes {
         boilerRoom
         createdAt
         description
-        upcomingEvents
         video
       }
     }
@@ -94,6 +93,10 @@ query EventDetail($eventDetailId: ID) {
         date
         name
         location
+        tableImg
+        bookingLink
+        waLink
+        artists
       }
     }
   }

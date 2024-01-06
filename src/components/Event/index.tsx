@@ -8,6 +8,7 @@ import { useQuery } from "@apollo/client";
 import { myLoader } from "@/utils/ImgLoader";
 import { Loader } from "../common/Loader";
 import { Layout } from "../common/Layout";
+import moment from "moment";
 export interface EventList {
   id: string;
   attributes: {
@@ -27,6 +28,18 @@ export const Event = () => {
   const { data, loading } = useQuery(EventsQuery);
   const eventsData = data?.events?.data[0]?.attributes;
   const animationSpeed = 100; // Speed in milliseconds (adjust as needed)
+  const upcomingEvents = eventsData?.event_details?.data?.filter(
+    (item: EventList) =>
+      moment(item.attributes.date).format() >= moment().format()
+  );
+  const pastEvents = eventsData?.event_details?.data
+    ?.filter(
+      (item: EventList) =>
+        moment(item.attributes.date).format() < moment().format()
+    )
+    .sort((a:EventList, b:EventList) =>
+      moment(a.attributes.date).format() > moment(b.attributes.date).format() ? -1 : 1
+    );
 
   useEffect(() => {
     let currentIndex = 0;
@@ -80,8 +93,11 @@ export const Event = () => {
               <h2 className="text-2xl md:text-4xl">
                 Events <span className="font-bold text-red-600">List</span>
               </h2>
+              <h2 className="text-xl md:text-4xl text-center">
+                Upcoming <span className="font-bold text-primary">Events</span>
+              </h2>
               <div className="flex flex-col items-center">
-                {eventsData?.event_details?.data?.map((item: EventList) => (
+                {upcomingEvents?.map((item: EventList) => (
                   <Link
                     className="border-[#6a60604d] border-b grid grid-cols-3 w-[100%] md:p-8 md:text-2xl text-center p-4 items-center hover:scale-110 transition-transform hover:border-red-400"
                     key={item.id}
@@ -97,6 +113,28 @@ export const Event = () => {
                       {item.attributes.location}
                     </h3>
                   </Link>
+                ))}
+              </div>
+              <h2 className="text-xl md:text-4xl text-center">
+                Past <span className="font-bold text-secondary">Events</span>
+              </h2>
+              <div className="flex flex-col items-center">
+                {pastEvents?.map((item: EventList) => (
+                  <div
+                    className="border-[#6a60604d] border-b grid grid-cols-3 w-[100%] md:p-8 md:text-2xl text-center p-4 items-center opacity-[.3]"
+                    key={item.id}
+                    // href={{
+                    //   pathname: `/event/${item.attributes.name}`,
+                    //   query: { a: item.id },
+                    // }}
+                    aria-label={`navigate to ${item.attributes.name} event`}
+                  >
+                    <span>{item.attributes.date}</span>
+                    <h2 className="font-bold">{item.attributes.name}</h2>
+                    <h3 className="font-semibold">
+                      {item.attributes.location}
+                    </h3>
+                  </div>
                 ))}
               </div>
             </div>
