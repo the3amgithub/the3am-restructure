@@ -1,0 +1,22 @@
+query GetEvents {
+  getEvents {
+    pastEvents {
+      _id
+      name
+      location
+      date
+      description
+      banner
+      tableLayout
+    }
+    upcomingEvents {
+      _id
+      name
+      location
+      date
+      description
+      banner
+      tableLayout
+    }
+  }
+}

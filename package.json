@@ -6,15 +6,21 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "codegen": "graphql-codegen --config codegen.ts"
   },
   "dependencies": {
     "@apollo/client": "^3.8.5",
+    "@graphql-codegen/cli": "^5.0.0",
+    "@graphql-codegen/client-preset": "^4.1.0",
+    "@graphql-codegen/introspection": "^4.0.0",
+    "@graphql-codegen/typescript-react-apollo": "^4.1.0",
     "@react-google-maps/api": "^2.19.2",
     "google-map-react": "^2.2.1",
     "graphql": "^16.8.1",
     "moment": "^2.30.1",
     "next": "13.5.4",
+    "next-plugin-graphql": "^0.0.2",
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^4.11.0",

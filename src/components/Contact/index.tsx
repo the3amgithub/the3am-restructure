@@ -43,8 +43,7 @@ export const Contact = () => {
         <Layout>
           <div className="relative top-0 h-[400px] md:h-screen">
             <Image
-              loader={() => myLoader(contactData?.banner || "")}
-              src={`${process.env.NEXT_PUBLIC_API_URL_FILE}${contactData?.banner}`}
+             src='/img/banner.jpg'
               fill
               objectFit="cover"
               alt="Home"

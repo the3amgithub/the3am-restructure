@@ -3,41 +3,26 @@ import { PrimaryButton } from "@/components/common/Buttons/PrimaryButton";
 import { Container } from "@/components/common/Container";
 import { Layout } from "@/components/common/Layout";
 import { Loader } from "@/components/common/Loader";
+import { useGetEventQuery } from "@/graphql/generated/schema";
 import { EventDetailQuery } from "@/graphql/query";
 import { myLoader } from "@/utils/ImgLoader";
 import { useQuery } from "@apollo/client";
-import { GoogleMap, useLoadScript } from "@react-google-maps/api";
 import Image from "next/image";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useMemo } from "react";
 const gradientStyles = {
   backgroundImage: "linear-gradient(-45deg, #c1089e 20%, #ff4e00 100%)",
 };
 export const DetailEvent = () => {
-  const searchParams = useSearchParams();
-  const search = searchParams.get("a");
-  const { data, loading } = useQuery(EventDetailQuery, {
+  const search = usePathname().split('/');
+  
+  const { data, loading } = useGetEventQuery({
     variables: {
-      eventDetailId: search,
+      getEventId: search[2],
     },
   });
-  const eventData = data?.eventDetail?.data?.attributes;
-
-  // const { isLoaded } = useLoadScript({
-  //   googleMapsApiKey: "AIzaSyDGjR7kqAFRiZ6hVluT9LhshR7_wvqOEug",
-  // });
-  const center = useMemo(
-    () => ({
-      lat: parseFloat(eventData?.address?.lat),
-      lng: parseFloat(eventData?.address?.lng),
-    }),
-    [eventData]
-  );
-  const containerStyle = {
-    width: "100%",
-    height: "500px",
-  };
+  const eventData = data?.getEvent;
 
   return (
     <>
@@ -45,8 +30,8 @@ export const DetailEvent = () => {
         <Layout>
           <div className="relative top-0 h-[400px] md:h-screen flex flex-col justify-center">
             <Image
-              loader={() => myLoader(eventData?.img || "")}
-              src={`${process.env.NEXT_PUBLIC_API_URL_FILE}${eventData?.img}`}
+              loader={() => myLoader(eventData?.banner || "")}
+              src={`${process.env.NEXT_PUBLIC_API_IMG_URL}/${eventData?.banner}`}
               fill
               objectFit="cover"
               alt="Home"
@@ -60,8 +45,8 @@ export const DetailEvent = () => {
               <div className="flex flex-col gap-10">
                 <div className="flex flex-col gap-4 items-center lg:flex-row">
                   <Image
-                    loader={() => myLoader(eventData?.img || "")}
-                    src={`${process.env.NEXT_PUBLIC_API_URL_FILE}${eventData?.img}`}
+                    loader={() => myLoader(eventData?.banner || "")}
+                    src={`${process.env.NEXT_PUBLIC_API_IMG_URL}/${eventData?.banner}`}
                     width={200}
                     height={300}
                     alt="Home"
@@ -78,11 +63,11 @@ export const DetailEvent = () => {
                     <div className="flex gap-4 items-center">
                       <PrimaryButton
                         label="Book Ticket"
-                        link={eventData?.bookingLink}
+                        link={""}
                         target="_blank"
                       />
                       <Link
-                        href={eventData?.waLink}
+                        href={""}
                         target="_blank"
                         className="flex gap-2 items-center text-md md:text-lg px-3 md:px-6 py-2 rounded-full text-center font-bold w-[350px]"
                         style={gradientStyles}
@@ -103,22 +88,19 @@ export const DetailEvent = () => {
                   <h1 className="text-2xl md:text-4xl">
                     About <span className="font-bold text-red-600">Event</span>
                   </h1>
-                  <p>{eventData?.about}</p>
+                  <p>{eventData?.description}</p>
                 </div>
-                <div className="flex flex-col">
+                {/* <div className="flex flex-col">
                   <h1 className="text-2xl md:text-4xl">
                     About{" "}
                     <span className="font-bold text-primary">Artists</span>
                   </h1>
                   <div className="flex flex-col gap-2">
-                    {eventData.artists.map(
+                    {eventData?.artists.map(
                       (item: { name: string; insta: string }, i: number) => (
                         <li className="flex items-center gap-2" key={i}>
-                         {item?.name}
-                          <Link
-                            href={item?.insta}
-                            target="_blank"
-                          >
+                          {item?.name}
+                          <Link href={item?.insta} target="_blank">
                             <Image
                               src="/img/instagram.png"
                               width={20}
@@ -131,7 +113,7 @@ export const DetailEvent = () => {
                       )
                     )}
                   </div>
-                </div>
+                </div> */}
               </div>
               <div className="flex justify-center w-full h-full">
                 {/* {!isLoaded ? (
@@ -144,8 +126,8 @@ export const DetailEvent = () => {
                   />
                 )} */}
                 <Image
-                  loader={() => myLoader(eventData?.tableImg || "")}
-                  src={`${process.env.NEXT_PUBLIC_API_URL_FILE}${eventData?.tableImg}`}
+                  loader={() => myLoader(eventData?.tableLayout || "")}
+                  src={`${process.env.NEXT_PUBLIC_API_URL_FILE}${eventData?.tableLayout}`}
                   width={500}
                   height={500}
                   alt="Home"

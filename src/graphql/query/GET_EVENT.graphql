@@ -1,0 +1,11 @@
+query GetEvent($getEventId: ID!) {
+  getEvent(id: $getEventId) {
+    _id
+    name
+    location
+    date
+    description
+    banner
+    tableLayout
+  }
+}
