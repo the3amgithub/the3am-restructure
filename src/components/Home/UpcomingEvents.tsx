@@ -14,7 +14,7 @@ export const UpcomingEvents = () => {
   const upcomingEvents = data?.getEvents?.upcomingEvents;
   const img = "/img/event-bg.jpg";
   return (
-    <div className="relative w-full h-[500px] h-auto">
+    <div className="relative w-full h-[500px] h-auto py-6">
       <Image src={img} layout="fill" objectFit="cover" alt="Home" />
 
       <Container>

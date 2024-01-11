@@ -31,12 +31,27 @@ export type EventInput = {
   location: Scalars['String']['input'];
   name: Scalars['String']['input'];
   tableLayout: Scalars['String']['input'];
+  tickets?: InputMaybe<Array<InputMaybe<EventTicketInput>>>;
 };
 
 export type EventPayload = {
   __typename?: 'EventPayload';
   error?: Maybe<ErrorType>;
   event?: Maybe<EventType>;
+};
+
+export type EventTicket = {
+  __typename?: 'EventTicket';
+  _id?: Maybe<Scalars['ID']['output']>;
+  category?: Maybe<Scalars['String']['output']>;
+  price?: Maybe<Scalars['Int']['output']>;
+  quantity?: Maybe<Scalars['Int']['output']>;
+};
+
+export type EventTicketInput = {
+  category?: InputMaybe<Scalars['String']['input']>;
+  price?: InputMaybe<Scalars['Int']['input']>;
+  quantity?: InputMaybe<Scalars['Int']['input']>;
 };
 
 export type EventType = {
@@ -48,6 +63,7 @@ export type EventType = {
   location: Scalars['String']['output'];
   name: Scalars['String']['output'];
   tableLayout: Scalars['String']['output'];
+  tickets?: Maybe<Array<Maybe<EventTicket>>>;
 };
 
 export type EventsList = {
@@ -83,7 +99,7 @@ export type GetEventQueryVariables = Exact<{
 }>;
 
 
-export type GetEventQuery = { __typename?: 'Query', getEvent?: { __typename?: 'EventType', _id: string, name: string, location: string, date: any, description: string, banner: string, tableLayout: string } | null };
+export type GetEventQuery = { __typename?: 'Query', getEvent?: { __typename?: 'EventType', _id: string, name: string, location: string, date: any, description: string, banner: string, tableLayout: string, tickets?: Array<{ __typename?: 'EventTicket', _id?: string | null, category?: string | null, price?: number | null, quantity?: number | null } | null> | null } | null };
 
 export type GetEventsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -101,6 +117,12 @@ export const GetEventDocument = gql`
     description
     banner
     tableLayout
+    tickets {
+      _id
+      category
+      price
+      quantity
+    }
   }
 }
     `;

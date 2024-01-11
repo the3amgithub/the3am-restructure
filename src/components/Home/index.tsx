@@ -86,6 +86,7 @@ export const Home = () => {
           {/* {data && ( */}
           <div className="relative mt-10 flex flex-col gap-8 w-full">
             <Description />
+            <UpcomingEvents />
 
             <BoilerRoom data={boilerRoom} />
 

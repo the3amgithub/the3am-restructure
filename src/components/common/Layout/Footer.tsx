@@ -24,7 +24,7 @@ const socialIcons = [
 ];
 export const Footer = () => {
   return (
-    <footer className="bg-black mt-8">
+    <footer className="bg-black mt-8 absolute bottom-0 w-full">
       <Container>
         <div className="flex gap-6 items-center justify-between">
           <Link

@@ -4,19 +4,16 @@ import { Container } from "@/components/common/Container";
 import { Layout } from "@/components/common/Layout";
 import { Loader } from "@/components/common/Loader";
 import { useGetEventQuery } from "@/graphql/generated/schema";
-import { EventDetailQuery } from "@/graphql/query";
 import { myLoader } from "@/utils/ImgLoader";
-import { useQuery } from "@apollo/client";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useMemo } from "react";
 const gradientStyles = {
   backgroundImage: "linear-gradient(-45deg, #c1089e 20%, #ff4e00 100%)",
 };
 export const DetailEvent = () => {
-  const search = usePathname().split('/');
-  
+  const search = usePathname().split("/");
+
   const { data, loading } = useGetEventQuery({
     variables: {
       getEventId: search[2],
@@ -63,8 +60,7 @@ export const DetailEvent = () => {
                     <div className="flex gap-4 items-center">
                       <PrimaryButton
                         label="Book Ticket"
-                        link={""}
-                        target="_blank"
+                        link={`${search[2]}/ticket`}
                       />
                       <Link
                         href={""}
@@ -116,21 +112,12 @@ export const DetailEvent = () => {
                 </div> */}
               </div>
               <div className="flex justify-center w-full h-full">
-                {/* {!isLoaded ? (
-                  <h1>Loading...</h1>
-                ) : (
-                  <GoogleMap
-                    mapContainerStyle={containerStyle}
-                    center={center}
-                    zoom={10}
-                  />
-                )} */}
                 <Image
                   loader={() => myLoader(eventData?.tableLayout || "")}
                   src={`${process.env.NEXT_PUBLIC_API_URL_FILE}${eventData?.tableLayout}`}
                   width={500}
                   height={500}
-                  alt="Home"
+                  alt="Table Layout"
                   className="w-[500px] lg:h-[600px] object-contain lg:ml-10"
                 />
               </div>
