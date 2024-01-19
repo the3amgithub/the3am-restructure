@@ -28,8 +28,8 @@ export const UpcomingEvents = () => {
                 className="border-t border-b grid grid-cols-3 w-[100%] md:p-8 md:text-2xl text-center p-4 items-center"
                 key={item?._id}
                 href={{
-                  pathname: `/event/${item?.name}`,
-                  query: { a: item?._id },
+                  pathname: `/event/${item?._id}`,
+              
                 }}
               >
                 <span>{item?.date}</span>

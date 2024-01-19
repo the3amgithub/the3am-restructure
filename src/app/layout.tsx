@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import FavIcon from "../../public/favicon/favicon.ico";
 import { Provider } from "@/client/Provider";
-import { Layout } from "@/components/common/Layout";
 import { CMSContext } from "@/context";
 import Head from "next/head";
 const inter = Poppins({

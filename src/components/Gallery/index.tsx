@@ -1,12 +1,9 @@
 "use client";
-import { galleyQuery } from "@/graphql/query";
+
 import { useQuery } from "@apollo/client";
 import { Layout } from "../common/Layout";
 
 export const Galley = () => {
-  const { data, loading } = useQuery(galleyQuery);
-  const galleryData = data?.galleries?.data[0]?.attributes;
-
   return (
     <Layout>
       <div>

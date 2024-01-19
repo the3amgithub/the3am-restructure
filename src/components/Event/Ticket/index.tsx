@@ -88,11 +88,11 @@ const Tikcet = () => {
                   className="w-[200px] h-[150px] md:w-[300px] md:h-[200px]"
                 />
                 <div className="flex flex-col gap-2 w-full">
-                  <span>{eventData?.location}</span>
                   <h2 className="font-bold">{eventData?.name}</h2>
                   <span className="text-primary">
                     {moment(eventData?.date).format("MMMM Do YYYY")}
                   </span>
+                  <span>{eventData?.location}</span>
                 </div>
               </div>
               <div className="flex w-full p-4 gap-10 flex-col items-center lg:flex-row">

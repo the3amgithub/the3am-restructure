@@ -83,16 +83,11 @@ export const Home = () => {
               <span>{text.slice(15)}</span>
             </h1>
           </div>
-          {/* {data && ( */}
+
           <div className="relative mt-10 flex flex-col gap-8 w-full">
             <Description />
             <UpcomingEvents />
-
             <BoilerRoom data={boilerRoom} />
-
-            <UpcomingEvents />
-
-            {/* {homeData?.video && <EventVideo data={homeData?.video} />} */}
           </div>
         </div>
       </Layout>
