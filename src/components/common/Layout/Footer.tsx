@@ -40,7 +40,7 @@ export const Footer = () => {
             />
           </Link>
           <span className="text-center text-[10px] md:text-sm">
-            All rights reserved © 2023
+            All rights reserved © {new Date().getFullYear()}
           </span>
           <p className="flex gap-2 lg:gap-4">
             {socialIcons.map((item, i) => (
