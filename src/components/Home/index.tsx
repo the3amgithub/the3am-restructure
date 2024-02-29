@@ -1,8 +1,5 @@
 "use client";
-import { useQuery } from "@apollo/client";
-import { HomeQuery } from "@/graphql/query";
 import { Description } from "./Description";
-import { Loader } from "../common/Loader";
 import { useEffect, useState } from "react";
 import { UpcomingEvents } from "./UpcomingEvents";
 import Image from "next/image";
