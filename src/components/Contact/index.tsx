@@ -1,5 +1,4 @@
 "use client";
-import { contactQuery } from "@/graphql/query";
 import { useQuery } from "@apollo/client";
 import React, { useEffect, useState } from "react";
 import { ContactSect } from "./ContactSect";
@@ -7,10 +6,11 @@ import { Loader } from "../common/Loader";
 import { myLoader } from "@/utils/ImgLoader";
 import Image from "next/image";
 import { Layout } from "../common/Layout";
+import { useGetContactsQuery } from "@/graphql/generated/schema";
 export const Contact = () => {
   const [text, setText] = useState("Get In Touch");
-  const { data, loading } = useQuery(contactQuery);
-  const contactData = data?.contacts?.data[0]?.attributes;
+  const { data, loading } = useGetContactsQuery();
+  const contactData = data?.getContacts;
   const animationSpeed = 100; // Speed in milliseconds (adjust as needed)
 
   useEffect(() => {
@@ -42,13 +42,7 @@ export const Contact = () => {
       {data && (
         <Layout>
           <div className="relative top-0 h-[400px] md:h-screen">
-            <Image
-              loader={() => myLoader(contactData?.banner || "")}
-              src={`${process.env.NEXT_PUBLIC_API_URL_FILE}${contactData?.banner}`}
-              fill
-              objectFit="cover"
-              alt="Home"
-            />
+            <Image src="/img/banner.jpg" fill objectFit="cover" alt="Home" />
             <h1 className="relative top-[40%] left-10 lg:left-24 text-4xl md:text-6xl font-semibold leading-[50px] md:leading-[82px]">
               <span>{text.slice(0, 6)}</span>
               <br />
@@ -60,7 +54,7 @@ export const Contact = () => {
             </h1>
           </div>
           <div className="flex flex-col gap-10">
-            <ContactSect data={contactData.information} />
+            {contactData && <ContactSect data={contactData} />}
           </div>
         </Layout>
       )}

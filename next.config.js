@@ -1,15 +1,14 @@
 /** @type {import('next').NextConfig} */
+const graphql = require("next-plugin-graphql");
+
 const nextConfig = {
-images:{
-    remotePatterns:[
-        {
-            protocol:"https",
-            hostname:"3am-bicket.blr1.cdn.digitaloceanspaces.com",
-            port:"",
-            pathname:"/3am/**"
-        }
-    ]
-}
+    reactStrictMode: true,
 };
 
-module.exports = nextConfig;
+module.exports = () => {
+    const plugins = [graphql];
+    const config = plugins.reduce((acc, plugin) => plugin(acc), {
+        ...nextConfig,
+    });
+    return config;
+};

@@ -1,0 +1,17 @@
+query GetContacts {
+  getContacts {
+    _id
+    moreInfo {
+      label
+      email
+    }
+    bookingQuery {
+      label
+      email
+    }
+    conversation {
+      label
+      email
+    }
+  }
+}

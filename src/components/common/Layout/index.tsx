@@ -14,7 +14,7 @@ export const Layout = ({ children }: LayoutProp) => {
       )}
     >
       <Header />
-      {children}
+      <div className="mb-[120px]">{children}</div>
       <Footer />
     </div>
   );
