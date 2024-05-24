@@ -14,8 +14,7 @@ const config: Config = {
       backgroundImage: {
         "custom-gradient":
           "linear-gradient(to right top, #000000, #150e12, #20181f, #29212e, #2e2c3f, #2c3247, #27394e, #224054, #1d4251, #1d434d, #204448, #254543)",
-        "custom-gradient2":
-          "linear-gradient(to right top, #254543, #1e3d40, #19343c, #172c36, #16242f, #16242f, #16242f, #16242f, #172c36, #19343c, #1e3d40, #254543)",
+        "custom-gradient2":"linear-gradient(to right top, #080d4e, #001f55, #002b54, #00344e, #003c48, #034247, #114845, #214e41, #26543b, #325831, #425c25, #555e18)",
       },
       colors: {
         white: colors.white,

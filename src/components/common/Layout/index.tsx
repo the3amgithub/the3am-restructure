@@ -41,12 +41,12 @@ export const Layout: React.FC<LayoutProps> = ({ children }: LayoutProps) => {
   }, []);
 
   useEffect(() => {
-    let threshold = 1200; // default threshold
+    let threshold = 1400; // default threshold
 
     if (screenWidth < 640) {
       threshold = 600;
     } else if (screenWidth < 1024) {
-      threshold = 900;
+      threshold = 1000;
     }
 
     if (scrollPosition < threshold) {
@@ -58,7 +58,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }: LayoutProps) => {
     } else {
       controls.start({
         backgroundImage:
-          'linear-gradient(to right top, #254543, #1e3d40, #19343c, #172c36, #16242f, #16242f, #16242f, #16242f, #172c36, #19343c, #1e3d40, #254543)',
+          "linear-gradient(to right top, #254543, #12484f, #004a5e, #004b6d, #1c4978, #1c4978, #1c4978, #1c4978, #004b6d, #004a5e, #12484f, #254543)",
         transition: { duration: 0.8, ease: 'easeInOut' },
       });
     }
