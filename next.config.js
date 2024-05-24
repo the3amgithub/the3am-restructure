@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const graphql = require("next-plugin-graphql");
 
+
 const nextConfig = {
     reactStrictMode: true,
 };

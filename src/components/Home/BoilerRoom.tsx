@@ -1,33 +1,58 @@
 import React from "react";
 import { Container } from "../common/Container";
-import { BoilerCard } from "./BoilerCard";
+import { Card, CardFooter, Image } from "@nextui-org/react";
+import { CustomSlider } from "../common/Slider";
+import { arrData } from "./UpcomingEvents";
+import { motion } from "framer-motion";
 
 interface BoilerRoom {
   name: string;
   img: string;
 }
+const boilerData = [
+  {
+    name: "Monolink",
+    img: "/img/Monolink.jpeg",
+  },
+];
 export const BoilerRoom = ({ data }: { data: BoilerRoom[] }) => {
   return (
-    <div className="bg-[#24242f] py-4">
-      <Container>
-        <h2 className="relative text-4xl">
-          Boiler <span className="font-bold">Room</span>
+    <Container>
+      <div className="flex flex-col gap-4">
+        <h2 className="text-4xl">
+          Boiler <span className="font-bold text-primary">Room</span>
         </h2>
-      </Container>
-
-      <div className="flex">
-        <div className="flex flex-col w-[200px] h-[400px] md:h-[500px] md:min-w-[300px] lg:h-[600px] lg:w-[34%]">
-          <BoilerCard img={data[0].img} label={data[0].name} />
-          <BoilerCard img={data[1].img} label={data[1].name} />
-        </div>
-        <div className="w-[200px] h-[400px] lg:h-[600px] md:h-[500px] md:min-w-[300px] lg:w-[34%]">
-          <BoilerCard img={data[2].img} label={data[2].name} />
-        </div>
-        <div className="flex flex-col w-[200px] h-[400px] md:h-[500px] md:min-w-[300px] lg:h-[600px] lg:w-[34%]">
-          <BoilerCard img={data[3].img} label={data[3].name} />
-          <BoilerCard img={data[4].img} label={data[4].name} />
-        </div>
+        <p className="text-sm text-gray-400 capitalize">
+          Unleash the energy with our Boiler Room lineup.
+          <br /> Dive into the sounds of the artists who fuel our nights with
+          unforgettable live performances. <br />
+          Feel the heat, hear the beats.
+        </p>
+        <CustomSlider>
+          {arrData.map((item, i) => (
+            <div key={i}>
+              <Card
+                isFooterBlurred
+                className="lg:w-[300px] md:w-[280px] h-[300px] bg-black/20 text-white "
+              >
+                <motion.span
+                  whileHover={{ scale: 1.2 }}
+                  whileTap={{ scale: 1.2 }}
+                >
+                  <Image
+                    alt="Woman listing to music"
+                    className="z-0 w-full h-full object-cover"
+                    src="/img/korolova1.jpg"
+                  />
+                </motion.span>
+                <CardFooter className="before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
+                  <p className="text-white/80 font-bold">Korolova</p>
+                </CardFooter>
+              </Card>
+            </div>
+          ))}
+        </CustomSlider>
       </div>
-    </div>
+    </Container>
   );
 };

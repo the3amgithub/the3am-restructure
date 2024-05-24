@@ -6,14 +6,19 @@ body {
   color: white;
 }
 
-@media (max-width: 768px) {
-  .carousel-slide img {
-    width: 100%; /* Make the image 100% of the viewport width for mobile screens */
-    height: auto; /* Maintain aspect ratio */
-  }
-}
 .map-container {
   height: 100%;
   width: 100%;
 }
 
+.center .slick-center .sliderwarpper {
+  opacity: 1;
+  -ms-transform: scale(1.08);
+  transform: scale(1.08);
+}
+.center .sliderwarpper {
+  transition: all 0.1s ease;
+}
+.slick-dots li button::before {
+  color: white !important; /* Change to your desired color */
+}

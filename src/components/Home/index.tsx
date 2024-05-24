@@ -1,10 +1,13 @@
 "use client";
-import { Description } from "./Description";
 import { useEffect, useState } from "react";
 import { UpcomingEvents } from "./UpcomingEvents";
 import Image from "next/image";
 import { BoilerRoom } from "./BoilerRoom";
 import { Layout } from "../common/Layout";
+import { Showcases } from "./Showcases";
+import { Description } from "./Description";
+import { SupportForm } from "./SupportForm";
+
 export const Home = () => {
   const [text, setText] = useState("Join The Techno Revolution");
 
@@ -58,36 +61,37 @@ export const Home = () => {
   }, []);
 
   return (
-    <>
-      <Layout>
-        <div className="flex flex-col">
-          <div className="relative h-[400px] md:h-screen">
-            <Image
-              src="/img/banner.jpg"
-              fill
-              objectFit="cover"
-              alt="Home"
-              priority
-            />
+    <Layout>
+      <div className="flex flex-col gap-6">
+        <div className="relative h-[400px] md:h-screen">
+          <Image
+            src="/img/banner.jpg"
+            fill
+            objectFit="cover"
+            alt="Home"
+            priority
+          />
 
-            <h1 className="relative top-[40%] left-10 lg:left-24 text-4xl md:text-6xl font-semibold leading-[50px] md:leading-[82px]">
-              <span>{text.slice(0, 9)}</span>
-              <br />
-              <span className="font-bold text-4xl md:text-6xl text-primary">
-                {text.slice(9, 15)}
-              </span>
-              <br />
-              <span>{text.slice(15)}</span>
-            </h1>
-          </div>
-
-          <div className="relative mt-10 flex flex-col gap-8 w-full">
-            <Description />
-            <UpcomingEvents />
-            <BoilerRoom data={boilerRoom} />
-          </div>
+          <h1 className="relative top-[40%] left-10 lg:left-24 text-4xl md:text-6xl font-semibold leading-[50px] md:leading-[82px]">
+            <span>{text.slice(0, 9)}</span>
+            <br />
+            <span className="font-bold text-4xl md:text-6xl text-primary">
+              {text.slice(9, 15)}
+            </span>
+            <br />
+            <span>{text.slice(15)}</span>
+          </h1>
         </div>
-      </Layout>
-    </>
+
+        <div className="flex flex-col gap-12 w-full">
+          <UpcomingEvents />
+          <Description />
+
+          <BoilerRoom data={boilerRoom} />
+          <Showcases />
+          <SupportForm />
+        </div>
+      </div>
+    </Layout>
   );
 };
