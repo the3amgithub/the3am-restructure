@@ -79,7 +79,7 @@ export const Layout = ({ children }: LayoutProp) => {
         <Timer />
         <Header />
       </div>
-      <div>{children}</div>
+      <div className="mt-32">{children}</div>
       <Footer />
     </motion.div>
   );
