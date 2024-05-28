@@ -58,7 +58,7 @@ export const Event = () => {
         <Layout>
           <div className="relative top-0 h-[400px] md:h-screen">
             <Image
-              src='/img/events.jpg'
+              src='/img/events1.jpg'
               fill
               objectFit="cover"
               alt="Home"

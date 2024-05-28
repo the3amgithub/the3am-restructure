@@ -5,6 +5,7 @@ import { Layout } from "@/components/common/Layout";
 import { Loader } from "@/components/common/Loader";
 import { useGetEventQuery } from "@/graphql/generated/schema";
 import { myLoader } from "@/utils/ImgLoader";
+import { Button } from "@nextui-org/react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -25,17 +26,15 @@ export const DetailEvent = () => {
     <>
       {data && (
         <Layout>
-          <div className="relative top-0 h-[400px] md:h-screen flex flex-col justify-center">
+          <div className="relative top-0 h-[400px] md:h-screen flex flex-col justify-center mt-8">
             <Image
               loader={() => myLoader(eventData?.banner || "")}
-              src={`${process.env.NEXT_PUBLIC_API_IMG_URL}/${eventData?.banner}`}
+              src={`${process.env.NEXT_PUBLIC_API_URL_FILE}/${eventData?.banner}`}
               fill
               objectFit="cover"
               alt="Home"
             />
-            <h1 className="relative text-2xl md:text-4xl font-bold z-[20] text-center">
-              {eventData?.name}
-            </h1>
+        
           </div>
           <Container>
             <div className="flex flex-col  mt-20 gap-8 lg:flex-row justify-between">
@@ -58,24 +57,17 @@ export const DetailEvent = () => {
                       <span>{eventData?.location}</span>
                     </div>
                     <div className="flex gap-4 items-center">
-                      <PrimaryButton
-                        label="Book Ticket"
-                        link={`${search[2]}/ticket`}
-                      />
-                      <Link
-                        href={""}
-                        target="_blank"
-                        className="flex gap-2 items-center text-md md:text-lg px-3 md:px-6 py-2 rounded-full text-center font-bold w-[350px]"
-                        style={gradientStyles}
-                      >
-                        Get In Touch
-                        <Image
-                          src="/img/whatsapp.png"
-                          width={20}
-                          height={20}
-                          alt="whtsapp"
-                          className="w-[20px] md:[w-25px]"
-                        />
+                      <Link href='https://wa.me/7409999071' target="_bank">
+                        <Button color="secondary">
+                          <Image
+                            src="/img/whatsapp.png"
+                            width={20}
+                            height={20}
+                            alt="whtsapp"
+                            className="w-[20px] md:[w-25px]"
+                          />
+                          Get In Touch
+                        </Button>
                       </Link>
                     </div>
                   </div>
@@ -111,16 +103,18 @@ export const DetailEvent = () => {
                   </div>
                 </div> */}
               </div>
-              <div className="flex justify-center w-full h-full">
-                <Image
-                  loader={() => myLoader(eventData?.tableLayout || "")}
-                  src={`${process.env.NEXT_PUBLIC_API_URL_FILE}${eventData?.tableLayout}`}
-                  width={500}
-                  height={500}
-                  alt="Table Layout"
-                  className="w-[500px] lg:h-[600px] object-contain lg:ml-10"
-                />
-              </div>
+              {eventData?.tableLayout && (
+                <div className="flex justify-center w-full h-full">
+                  <Image
+                    loader={() => myLoader(eventData?.tableLayout || "")}
+                    src={`${process.env.NEXT_PUBLIC_API_URL_FILE}${eventData?.tableLayout}`}
+                    width={500}
+                    height={500}
+                    alt="Table Layout"
+                    className="w-[500px] lg:h-[600px] object-contain lg:ml-10"
+                  />
+                </div>
+              )}
             </div>
           </Container>
         </Layout>

@@ -6,13 +6,14 @@ import {
   Card,
   CardHeader,
   CardBody,
-  Image,
   Button,
   CardFooter,
 } from "@nextui-org/react";
 import { CustomSlider } from "../common/Slider";
 import { motion } from "framer-motion";
-
+import { myLoader } from "@/utils/ImgLoader";
+import Image from "next/image";
+import Link from "next/link";
 export const arrData = [
   {
     name: "Monolink",
@@ -68,66 +69,48 @@ export const UpcomingEvents = () => {
           <br />
           immerse yourself in the beats that ignite the dance floor.
         </p>
+      </div>
+      {upcomingEvents && upcomingEvents?.length > 0 ? (
         <CustomSlider>
-          {arrData.map((item, i) => (
+          {upcomingEvents.map((item, i) => (
             <motion.div
               key={i}
-              whileHover={{ scale: .8 }}
+              whileHover={{ scale: 0.8 }}
               whileTap={{ scale: 0.8 }}
             >
-              <Card className="lg:w-[300px] md:w-[280px] h-[300px] bg-black/20 text-white p-2">
+              <Card className="lg:w-[300px] md:w-[280px] h-[300px] bg-black/20 text-white p-2 mt-4">
                 <CardHeader className="flex-col items-start">
-                  <h2 className="uppercase font-bold">{item.name}</h2>
-                  <small>{item.venue}</small>
-                  <small>{item.date}</small>
+                  <h2 className="uppercase font-bold">{item?.name}</h2>
+                  <small>{item?.location}</small>
+                  <small>{item?.date}</small>
                 </CardHeader>
                 <CardBody className="overflow-hidden">
                   <Image
                     alt="Card background"
                     className="w-[300px] h-[160px] object-cover rounded-xl pb-6 rounded "
-                    src={item.img}
+                    loader={() => myLoader(item?.banner || "")}
+                    src={`${process.env.NEXT_PUBLIC_API_IMG_URL}/${item?.banner}`}
+                    width={300}
+                    height={160}
                   />
                 </CardBody>
                 <CardFooter className="flex gap-4 items-center">
-                  <Button className="text-tiny text-white bg-transparent border h-[25px]">
-                    Info
-                  </Button>
-                  <Button className="text-tiny text-white bg-primary/40 border w-20 h-[25px]">
-                    Tickets
-                  </Button>
+                  <Link href={`/event/${item?._id}`}>
+                    <Button className="text-tiny text-white bg-primary/40 border w-20 h-[25px]">
+                      Info
+                    </Button>
+                  </Link>
                 </CardFooter>
               </Card>
             </motion.div>
           ))}
         </CustomSlider>
-      </div>
-      {/* {upcomingEvents && upcomingEvents?.length > 0 ? (
-            <div className="relative mt-8 md:m-24 flex flex-col items-center">
-              {upcomingEvents?.map((item) => (
-                <Link
-                  className="border-t border-b grid grid-cols-3 w-[100%] md:p-8 md:text-2xl text-center p-4 items-center"
-                  key={item?._id}
-                  href={{
-                    pathname: `/event/${item?._id}`,
-                  }}
-                >
-                  <span>{item?.date}</span>
-                  <h2 className="font-bold">{item?.name}</h2>
-                  <h3 className="font-semibold">{item?.location}</h3>
-                </Link>
-              ))}
-              {upcomingEvents && upcomingEvents?.length > 0 && (
-                <div className="mt-8">
-                  <PrimaryButton label="CHECK ALL" link="/event" />
-                </div>
-              )}
-            </div>
-          ) : (
-            <h1 className="relative flex justify-center text-2xl md:text-3xl font-semibold gap-3 mt-10">
-              <span>Updating</span>
-              <span className="text-primary">Soon</span>
-            </h1>
-          )} */}
+      ) : (
+        <h1 className="relative flex justify-center text-2xl md:text-3xl font-semibold gap-3 mt-10">
+          <span>Events Updating</span>
+          <span className="text-primary">Soon</span>
+        </h1>
+      )}
     </Container>
   );
 };

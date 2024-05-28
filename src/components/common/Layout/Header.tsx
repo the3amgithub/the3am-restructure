@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React from "react";
 import {
   Navbar,
@@ -7,10 +7,9 @@ import {
   NavbarMenuItem,
   NavbarMenu,
   NavbarContent,
-  Link,
   Image,
 } from "@nextui-org/react";
-
+import Link from "next/link";
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
@@ -43,22 +42,26 @@ export const Header = () => {
       </NavbarContent>
 
       <NavbarContent className="sm:hidden" justify="end">
-        <Image src="/img/logo_white.png" alt="logo" width={80} height={80} />
+        <Link href="/">
+          <Image src="/img/logo_white.png" alt="logo" width={80} height={80} />
+        </Link>
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex" justify="start">
         <NavbarBrand>
-          <Image
-            src="/img/logo_white.png"
-            alt="logo"
-            width={100}
-            height={100}
-          />
+          <Link href="/">
+            <Image
+              src="/img/logo_white.png"
+              alt="logo"
+              width={100}
+              height={100}
+            />
+          </Link>
         </NavbarBrand>
 
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={index}>
-            <Link className="w-full text-white pl-20" href={item.url} size="lg">
+            <Link className="w-full text-white pl-20" href={item.url} >
               {item.name}
             </Link>
           </NavbarMenuItem>
@@ -68,7 +71,7 @@ export const Header = () => {
       <NavbarMenu className="bg-gray flex flex-col items-start justify-center gap-10">
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={index}>
-            <Link className="w-full text-white" href={item.url} size="lg">
+            <Link className="w-full text-white" href={item.url} >
               {item.name}
             </Link>
           </NavbarMenuItem>
