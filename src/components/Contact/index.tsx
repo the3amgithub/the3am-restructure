@@ -1,9 +1,7 @@
 "use client";
-import { useQuery } from "@apollo/client";
 import React, { useEffect, useState } from "react";
 import { ContactSect } from "./ContactSect";
 import { Loader } from "../common/Loader";
-import { myLoader } from "@/utils/ImgLoader";
 import Image from "next/image";
 import { Layout } from "../common/Layout";
 import { useGetContactsQuery } from "@/graphql/generated/schema";

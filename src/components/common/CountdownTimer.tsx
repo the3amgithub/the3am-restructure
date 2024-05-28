@@ -1,4 +1,3 @@
-// src/CountdownTimer.tsx
 import { useGetEventsQuery } from "@/graphql/generated/schema";
 import React, { useState, useEffect } from "react";
 

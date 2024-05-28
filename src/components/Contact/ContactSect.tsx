@@ -1,6 +1,4 @@
 import React from "react";
-import { Container } from "../common/Container";
-import Image from "next/image";
 import { Contact } from "@/graphql/generated/schema";
 
 export const ContactSect = ({ data }: { data: Contact }) => {
