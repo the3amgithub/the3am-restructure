@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import { TbCalendar, TbLocation, TbPin } from "react-icons/tb";
+import { TbCalendar, TbPin } from "react-icons/tb";
 
 export const EventCard = () => {
   return (

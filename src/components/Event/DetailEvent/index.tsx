@@ -1,5 +1,4 @@
 "use client";
-import { PrimaryButton } from "@/components/common/Buttons/PrimaryButton";
 import { Container } from "@/components/common/Container";
 import { Layout } from "@/components/common/Layout";
 import { Loader } from "@/components/common/Loader";
@@ -9,9 +8,7 @@ import { Button } from "@nextui-org/react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-const gradientStyles = {
-  backgroundImage: "linear-gradient(-45deg, #c1089e 20%, #ff4e00 100%)",
-};
+
 export const DetailEvent = () => {
   const search = usePathname().split("/");
 
