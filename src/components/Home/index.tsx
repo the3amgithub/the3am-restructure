@@ -1,21 +1,39 @@
 "use client";
-import { useQuery } from "@apollo/client";
-import { HomeQuery } from "@/graphql/query";
-import { Description } from "./Description";
-import { Loader } from "../common/Loader";
 import { useEffect, useState } from "react";
 import { UpcomingEvents } from "./UpcomingEvents";
 import Image from "next/image";
-import { EventVideo } from "./EventVideo";
 import { BoilerRoom } from "./BoilerRoom";
-import { myLoader } from "@/utils/ImgLoader";
 import { Layout } from "../common/Layout";
+import { Showcases } from "./Showcases";
+import { Description } from "./Description";
+import { SupportForm } from "./SupportForm";
+
 export const Home = () => {
-  const { data, loading } = useQuery(HomeQuery);
-  const homeData = data?.homes?.data[0]?.attributes;
   const [text, setText] = useState("Join The Techno Revolution");
 
   const animationSpeed = 100; // Speed in milliseconds (adjust as needed)
+  const boilerRoom = [
+    {
+      name: "Monolink",
+      img: "/img/Monolink.jpeg",
+    },
+    {
+      name: "Korolova",
+      img: "/img/1-32.jpg",
+    },
+    {
+      name: "Stephan",
+      img: "/img/video.jpg",
+    },
+    {
+      name: "Monolink",
+      img: "/img/Monolink.jpeg",
+    },
+    {
+      name: "Korolova",
+      img: "/img/1-32.jpg",
+    },
+  ];
 
   useEffect(() => {
     let currentIndex = 0;
@@ -43,52 +61,37 @@ export const Home = () => {
   }, []);
 
   return (
-    <>
-      {data && (
-        <Layout>
-          <div className="flex flex-col">
-            <div className="relative h-[400px] md:h-screen">
-              <Image
-                loader={() => myLoader(homeData?.banner || "")}
-                src={`${process.env.NEXT_PUBLIC_API_URL_FILE}${homeData?.banner}`}
-                fill
-                objectFit="cover"
-                alt="Home"
-                priority
-              />
-              <Image
-                loader={() => myLoader(homeData?.banner || "")}
-                src={`${process.env.NEXT_PUBLIC_API_URL_FILE}${homeData?.banner}`}
-                fill
-                objectFit="cover"
-                alt="Home"
-                // priority
-              />
-              <h1 className="relative top-[40%] left-10 lg:left-24 text-4xl md:text-6xl font-semibold leading-[50px] md:leading-[82px]">
-                <span>{text.slice(0, 9)}</span>
-                <br />
-                <span className="font-bold text-4xl md:text-6xl text-primary">
-                  {text.slice(9, 15)}
-                </span>
-                <br />
-                <span>{text.slice(15)}</span>
-              </h1>
-            </div>
-            {/* {data && ( */}
-            <div className="relative mt-10 flex flex-col gap-8 w-full">
-              <Description img={homeData?.description || ""} />
-              {homeData?.boilerRoom && (
-                <BoilerRoom data={homeData?.boilerRoom} />
-              )}
+    <Layout>
+      <div className="flex flex-col gap-6">
+        <div className="relative h-[400px] md:h-screen">
+          <Image
+            src="/img/banner.jpg"
+            fill
+            objectFit="cover"
+            alt="Home"
+            priority
+          />
 
-              <UpcomingEvents />
+          <h1 className="relative top-[40%] left-10 lg:left-24 text-4xl md:text-6xl font-semibold leading-[50px] md:leading-[82px]">
+            <span>{text.slice(0, 9)}</span>
+            <br />
+            <span className="font-bold text-4xl md:text-6xl text-primary">
+              {text.slice(9, 15)}
+            </span>
+            <br />
+            <span>{text.slice(15)}</span>
+          </h1>
+        </div>
 
-              {homeData?.video && <EventVideo data={homeData?.video} />}
-            </div>
-          </div>
-        </Layout>
-      )}
-      {loading && <Loader />}
-    </>
+        <div className="flex flex-col gap-12 w-full">
+          <UpcomingEvents />
+          <Description />
+
+          <BoilerRoom data={boilerRoom} />
+          <Showcases />
+          <SupportForm />
+        </div>
+      </div>
+    </Layout>
   );
 };

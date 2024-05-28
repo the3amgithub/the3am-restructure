@@ -3,12 +3,9 @@ import { useState, useEffect } from "react";
 import { Container } from "../common/Container";
 import Image from "next/image";
 import Link from "next/link";
-import { EventsQuery } from "@/graphql/query";
-import { useQuery } from "@apollo/client";
-import { myLoader } from "@/utils/ImgLoader";
 import { Loader } from "../common/Loader";
 import { Layout } from "../common/Layout";
-import moment from "moment";
+import { useGetEventsQuery } from "@/graphql/generated/schema";
 export interface EventList {
   id: string;
   attributes: {
@@ -25,21 +22,10 @@ export interface EventList {
 }
 export const Event = () => {
   const [text, setText] = useState("Welcome To The Revolution");
-  const { data, loading } = useQuery(EventsQuery);
-  const eventsData = data?.events?.data[0]?.attributes;
+  const { data, loading } = useGetEventsQuery()
   const animationSpeed = 100; // Speed in milliseconds (adjust as needed)
-  const upcomingEvents = eventsData?.event_details?.data?.filter(
-    (item: EventList) =>
-      moment(item.attributes.date).format() >= moment().format()
-  );
-  const pastEvents = eventsData?.event_details?.data
-    ?.filter(
-      (item: EventList) =>
-        moment(item.attributes.date).format() < moment().format()
-    )
-    .sort((a:EventList, b:EventList) =>
-      moment(a.attributes.date).format() > moment(b.attributes.date).format() ? -1 : 1
-    );
+  const upcomingEvents = data?.getEvents?.upcomingEvents
+  const pastEvents = data?.getEvents?.pastEvents
 
   useEffect(() => {
     let currentIndex = 0;
@@ -72,8 +58,7 @@ export const Event = () => {
         <Layout>
           <div className="relative top-0 h-[400px] md:h-screen">
             <Image
-              loader={() => myLoader(eventsData?.banner || "")}
-              src={`${process.env.NEXT_PUBLIC_API_URL_FILE}${eventsData?.banner}`}
+              src='/img/events1.jpg'
               fill
               objectFit="cover"
               alt="Home"
@@ -97,20 +82,20 @@ export const Event = () => {
                 Upcoming <span className="font-bold text-primary">Events</span>
               </h2>
               <div className="flex flex-col items-center">
-                {upcomingEvents?.map((item: EventList) => (
+                {upcomingEvents?.map((item) => (
                   <Link
                     className="border-[#6a60604d] border-b grid grid-cols-3 w-[100%] md:p-8 md:text-2xl text-center p-4 items-center hover:scale-110 transition-transform hover:border-red-400"
-                    key={item.id}
+                    key={item?._id}
                     href={{
-                      pathname: `/event/${item.attributes.name}`,
-                      query: { a: item.id },
+                      pathname: `/event/${item?._id}`,
+                     
                     }}
-                    aria-label={`navigate to ${item.attributes.name} event`}
+                    aria-label={`navigate to ${item?.name} event`}
                   >
-                    <span>{item.attributes.date}</span>
-                    <h2 className="font-bold">{item.attributes.name}</h2>
+                    <span>{item?.date}</span>
+                    <h2 className="font-bold">{item?.name}</h2>
                     <h3 className="font-semibold">
-                      {item.attributes.location}
+                      {item?.location}
                     </h3>
                   </Link>
                 ))}
@@ -119,20 +104,20 @@ export const Event = () => {
                 Past <span className="font-bold text-secondary">Events</span>
               </h2>
               <div className="flex flex-col items-center">
-                {pastEvents?.map((item: EventList) => (
+                {pastEvents?.map((item) => (
                   <div
                     className="border-[#6a60604d] border-b grid grid-cols-3 w-[100%] md:p-8 md:text-2xl text-center p-4 items-center opacity-[.3]"
-                    key={item.id}
+                    key={item?._id}
                     // href={{
                     //   pathname: `/event/${item.attributes.name}`,
                     //   query: { a: item.id },
                     // }}
-                    aria-label={`navigate to ${item.attributes.name} event`}
+                    aria-label={`navigate to ${item?.name} event`}
                   >
-                    <span>{item.attributes.date}</span>
-                    <h2 className="font-bold">{item.attributes.name}</h2>
+                    <span>{item?.date}</span>
+                    <h2 className="font-bold">{item?.name}</h2>
                     <h3 className="font-semibold">
-                      {item.attributes.location}
+                      {item?.location}
                     </h3>
                   </div>
                 ))}
